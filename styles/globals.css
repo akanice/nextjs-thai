@@ -1,9 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: #E5E5E5;
 }
 
 a {
@@ -13,4 +18,26 @@ a {
 
 * {
   box-sizing: border-box;
+}
+.stepper {
+  overflow: visible;
+}
+.stepper-head-icon {
+  width: 3rem;
+  height: 3rem;
+}
+.bg-main-color {
+  background-color: #424B5A;
+}
+.text-main-color {
+  color: #424B5A;
+}
+.border-main-color {
+  border-color: #424B5A;
+}
+.bg-second-color {
+  background: #FFC709;
+}
+.text-link {
+  color: #0071BB;
 }

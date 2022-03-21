@@ -4,7 +4,7 @@ import Register from '/components/register/';
 
 const _Home = ({ setting }) => {
   return (
-    <RegisterLayout title="Home" setting={setting}>
+    <RegisterLayout title="Register" setting={setting}>
       <Register />
     </RegisterLayout>
   );
