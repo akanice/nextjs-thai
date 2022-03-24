@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, Box } from '@material-ui/core';
-import { ExpansionPanel,ExpansionPanelSummary,ExpansionPanelDetails} from '@material-ui/core';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import {MdCheckCircleOutline} from "react-icons/md";
 import {FaExclamationCircle} from 'react-icons/fa';
 import ProgressStepper from '../Elements/ProgressStepper';
+import { Router } from '@mui/icons-material';
+import { useRouter } from 'next/router';
 
 const style = {
   position: 'absolute',
@@ -20,7 +19,8 @@ const style = {
   boxShadow: 24,
 };
 
-const RegisterStep2 = () => {
+const Register = () => {
+  const router = useRouter()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -28,14 +28,17 @@ const RegisterStep2 = () => {
   const [openModal, setOpenModal] = useState(false);
   const openModalGuide = () => setOpenModal(true);
   const closeModalGuide = () => setOpenModal(false);
-
+  const nextPage = (e) => {
+    router.push('/register')
+  } 
+  
   return (
     <div className={`p-6`}>
       <div className={``}>
         <div className="container mx-auto py-6">
-          <ProgressStepper />
+          <ProgressStepper page={1} />
 
-          <div className={`relative border border-gray-600 rounded p-6 mx-36`}>
+          <div className={`relative border border-gray-600 rounded p-6 mx-36 flex justify-center`}>
             <div className={`absolute top-3 right-3`}>
               <a href='#' className={`text-link underline`} onClick={openModalGuide}>Hướng dẫn</a>
               <Modal
@@ -67,115 +70,60 @@ const RegisterStep2 = () => {
                 </Box>
               </Modal>  
             </div>
-            <div className={`text-left`}>
-              <h2 className={`text-xl mb-2`}>Quý khách vui lòng tải/chụp đầy đủ hồ sơ tổ chức theo danh mục bên dưới</h2>
-              <p className={`text-sm text-red-500`}>Lưu ý: Toàn bộ hồ sơ cần phải được xác nhận bằng chữ ký số khách hàng tổ chức trước khi tải lên.</p>
-              
-              <div className="accordion" id="accordionExample5">
-                <div className="accordion-item bg-white border border-gray-200">
-                  <h2 className="accordion-header mb-0" id="headingOne5">
-                    <button className="
-                accordion-button
-                relative
-                flex
-                items-center
-                w-full
-                py-4
-                px-5
-                text-base text-gray-800 text-left
-                bg-white
-                border-0
-                rounded-none
-                transition
-                focus:outline-none
-              " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne5" aria-expanded="true" aria-controls="collapseOne5">
-                      Accordion Item #1
-                    </button>
-                  </h2>
-                  <div id="collapseOne5" className="accordion-collapse collapse show" aria-labelledby="headingOne5">
-                    <div className="accordion-body py-4 px-5">
-                      <strong>This is the first item's accordion body.</strong> It is shown by default,
-                      until the collapse plugin adds the appropriate classes that we use to style each
-                      element. These classes control the overall appearance, as well as the showing and
-                      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-                      our default variables. It's also worth noting that just about any HTML can go within
-                      the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
+            <div className={`flex-justify-center`}>
+              <h2 className={`text-xl text-center`}>Nhập thông tin doanh nghiệp của quý khách tại đây</h2>
+              <form className="px-8 pt-6 pb-8 mb-4 w-128">
+                <div className="mb-4">
+                  <input className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nhập số giấy tờ pháp lý của tổ chức" />
                 </div>
-                <div className="accordion-item bg-white border border-gray-200">
-                  <h2 className="accordion-header mb-0" id="headingTwo5">
-                    <button className="
-                accordion-button
-                collapsed
-                relative
-                flex
-                items-center
-                w-full
-                py-4
-                px-5
-                text-base text-gray-800 text-left
-                bg-white
-                border-0
-                rounded-none
-                transition
-                focus:outline-none
-              " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo5" aria-expanded="false" aria-controls="collapseTwo5">
-                      Accordion Item #2
-                    </button>
-                  </h2>
-                  <div id="collapseTwo5" className="accordion-collapse collapse" aria-labelledby="headingTwo5">
-                    <div className="accordion-body py-4 px-5">
-                      <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                      until the collapse plugin adds the appropriate classes that we use to style each
-                      element. These classes control the overall appearance, as well as the showing and
-                      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-                      our default variables. It's also worth noting that just about any HTML can go within
-                      the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
+                <div className={`text-sm mb-3 text-gray-400`}>*Số giấy tờ pháp lý chính là mã số đăng kí doanh nghiệp của tổ chức</div>
+                  <div className="mb-6">
+                    <select className="form-select appearance-none block w-full py-3 px-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border  border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                      <option selected>Chọn loại hình tổ chức</option>
+                      <option value={1}>Doanh nghiệp tư nhân</option>
+                      <option value={2}>Công ty TNHH 01 thành viên</option>
+                      <option value={3}>Công ty cổ phần</option>
+                    </select>
                   </div>
+                <div className="flex items-center justify-center">
+                  <button onClick = {nextPage} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="button">
+                    Tiếp tục
+                  </button>
                 </div>
-                <div className="accordion-item bg-white border border-gray-200">
-                  <h2 className="accordion-header mb-0" id="headingThree5">
-                    <button className="
-                accordion-button
-                collapsed
-                relative
-                flex
-                items-center
-                w-full
-                py-4
-                px-5
-                text-base text-gray-800 text-left
-                bg-white
-                border-0
-                rounded-none
-                transition
-                focus:outline-none
-              " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree5" aria-expanded="false" aria-controls="collapseThree5">
-                      Accordion Item #3
-                    </button>
-                  </h2>
-                  <div id="collapseThree5" className="accordion-collapse collapse" aria-labelledby="headingThree5">
-                    <div className="accordion-body py-4 px-5">
-                      <strong>This is the third item's accordion body.</strong> It is hidden by default,
-                      until the collapse plugin adds the appropriate classes that we use to style each
-                      element. These classes control the overall appearance, as well as the showing and
-                      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-                      our default variables. It's also worth noting that just about any HTML can go within
-                      the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
 
-          
+          <Button onClick={handleOpen}>Open modal</Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style} className={`px-36 py-9`}>
+              <div className={`flex flex-col items-center justify-center`}>
+                <h3 className={`text-center font-bold text-black text-2xl mb-3`}>Số giấy tờ pháp lý đã tồn tại</h3>
+                <p className={`text-sm text-gray-500 mb-3`}>Quý khách vui lòng kiểm tra thông tin và lựa chọn theo hướng dẫn dưới đây.</p>
+                <ol className={`text-left list-disc`}>
+                  <li className={`mb-2`}>Số giấy tờ pháp lý đã tồn tại: <span className={`text-link font-medium`}>0313449404583</span></li>
+                  <li className={`mb-2`}>Tên Tổ chức: <span className={`text-link font-medium`}>Công ty cổ phần ABC</span></li>
+                  <li className={`mb-2`}>Định danh tại: <span className={`text-link font-medium`}>Chi nhánh PVCombank Hàng Bông</span></li>
+                  <li className={`mb-2 list-none`}>
+                    <FormGroup>
+                      <FormControlLabel disableTypography={true} control={<Checkbox defaultChecked size="small" />} label="Mở thêm tài khoản online" className={`text-link`}/>
+                    </FormGroup>
+                  </li>
+                </ol>
+                
+              </div>
+            </Box>
+          </Modal>
+
         </div>
       </div>
     </div>
   );
 };
 
-export default RegisterStep2;
+export default Register;

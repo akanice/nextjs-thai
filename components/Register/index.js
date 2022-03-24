@@ -6,6 +6,8 @@ import Checkbox from '@mui/material/Checkbox';
 import {MdCheckCircleOutline} from "react-icons/md";
 import {FaExclamationCircle} from 'react-icons/fa';
 import ProgressStepper from '../Elements/ProgressStepper';
+import { Router } from '@mui/icons-material';
+import { useRouter } from 'next/router';
 
 const style = {
   position: 'absolute',
@@ -18,6 +20,7 @@ const style = {
 };
 
 const Register = () => {
+  const router = useRouter()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -25,12 +28,15 @@ const Register = () => {
   const [openModal, setOpenModal] = useState(false);
   const openModalGuide = () => setOpenModal(true);
   const closeModalGuide = () => setOpenModal(false);
-
+  const nextPage = () => {
+    router.push('/register')
+  } 
+  
   return (
     <div className={`p-6`}>
       <div className={``}>
         <div className="container mx-auto py-6">
-          <ProgressStepper />
+          <ProgressStepper page={1} />
 
           <div className={`relative border border-gray-600 rounded p-6 mx-36 flex justify-center`}>
             <div className={`absolute top-3 right-3`}>
@@ -80,7 +86,7 @@ const Register = () => {
                     </select>
                   </div>
                 <div className="flex items-center justify-center">
-                  <button className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="button">
+                  <button onClick = {nextPage} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="button">
                     Tiếp tục
                   </button>
                 </div>
