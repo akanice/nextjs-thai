@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 const ProgressStepper = (page) => {
-    console.log(page);
     return (
         <>
             <div className="flex mb-9" id="ProgressStepper">
