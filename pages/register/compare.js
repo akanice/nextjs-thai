@@ -1,14 +1,14 @@
 import React from 'react';
 import RegisterLayout from '/components/layout/RegisterLayout';
-import Register from '@components/Register';
+import RegisterCompare from '@components/Register/RegisterCompare';
 import '/'
 
-const _Register = ({ setting }) => {
+const _RegisterCompare = ({ setting }) => {
   return (
     <RegisterLayout title="Register" setting={setting}>
-      <Register />
+      <RegisterCompare />
     </RegisterLayout>
   );
 };
 
-export default _Register;
+export default _RegisterCompare;
