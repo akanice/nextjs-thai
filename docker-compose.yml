@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: 'agentpos'
+        ports:
+            - '3135:3000'
+        environment:
+            - NODE_ENV=production
+        working_dir: /app/public
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'

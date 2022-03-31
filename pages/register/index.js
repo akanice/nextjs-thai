@@ -1,13 +1,13 @@
 import React from 'react';
-import RegisterLayout from '/components/layout/RegisterLayout';
-import RegisterStep2 from '../register/registerStep2';
-import '/'
-const _Home = ({ setting }) => {
-  return (
-    <RegisterLayout title="Register" setting={setting}>
-      <RegisterStep2 />
-    </RegisterLayout>
-  );
+import RegisterLayout from '@components/Layout/RegisterLayout';
+import Register from '@components/Register';
+
+const _Register = ({ setting }) => {
+    return (
+        <RegisterLayout title="Register" setting={setting}>
+            <Register />
+        </RegisterLayout>
+    );
 };
 
-export default _Home;
+export default _Register;
