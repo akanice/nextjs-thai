@@ -3,10 +3,14 @@ import { Button, Modal, Box } from '@material-ui/core';
 import { FaExclamationCircle } from 'react-icons/fa';
 import ProgressStepper from '@components/Elements/ProgressStepper';
 import { useRouter } from 'next/router';
-import FileUpload from '@components/Upload/FileUpload';
-import UploadButton from '@components/Common/UploadButton';
+import {FaCaretDown} from 'react-icons/fa';
 import { MdCheckCircleOutline } from 'react-icons/md';
+import FormUpload1 from '@components/Register/Step2/FormUpload1';
+import FormUpload2 from '@components/Register/Step2/FormUpload2';
+import FormUpload3 from '@components/Register/Step2/FormUpload3';
+
 let ps;
+
 const RegisterStep2 = () => {
     const style = {
         position: 'absolute',
@@ -27,6 +31,8 @@ const RegisterStep2 = () => {
     const [openModal, setOpenModal] = useState(false);
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
+
+    const [tab, setTab] = useState(`step1`); 
 
     const sendDataToParent = (data, type) => {
         if (type == 'gpdkkd') {
@@ -114,103 +120,59 @@ const RegisterStep2 = () => {
                         </div>
                     </Box>
                 </Modal>
-                <div className="container mx-auto py-6">
-                    <h2 className={`text-center text-xl font-bold mb-9 text-link`}>CHỤP/TẢI HỒ SƠ KHÁCH HÀNG TỔ CHỨC</h2>
+                <div className="container mx-auto py-6" style={{maxWidth: "900px"}}>
                     <ProgressStepper page={2} />
-                    <p className={`text-center`}>Quý khách vui lòng tải/ chụp đầy đủ hồ sơ Tổ chức theo danh mục bên dưới. </p>
-                    <p className={`text-center text-sm text-red-500 mb-9`}>Lưu ý: Toàn bộ hồ sơ cần phải được xác nhận bằng chữ ký số khách hàng tổ chức trước khi tải lên.</p>
-                    <div className={`box-wrapper p-6 border border-gray-200 rounded-2xl mb-6`}>
-                        <div className={`flex justify-start mb-9`}>
-                            {/* Row 1 */}
-                            <div className={`w-9 h-9 leading-9 rounded bg-yellow-400 font-bold text-2xl text-center mr-24`}>1</div>
-                            <p>
-                                <span className={`text-red-400`}>*</span>
-                            </p>
-                            <p className={`text-right mr-3 w-96`}>
-                                <span className={``}>
-                                    Đăng ký kinh doanh/
-                                    <br />
-                                    Giấy chứng nhận đăng ký doanh nghiệp:{' '}
-                                </span>
-                            </p>
-                            {/* Upload button */}
-                            <div className={`flex-1`}>
-                                <UploadButton name={`upload_1`} label={`Chọn tải hồ sơ`} mess={`Vui lòng tải hồ sơ đã  xác nhận bằng Chữ ký số KHTC`} type={'gpdkkd'} sendDataToParent={sendDataToParent} />
-                            </div>
-                        </div>
-
-                        <div className={`flex justify-start mb-9`}>
-                            {/* Row 2 */}
-                            <div className={`w-9 h-9 leading-9 rounded bg-yellow-400 font-bold text-2xl text-center mr-24`}>2</div>
-                            <p>
-                                <span className={`text-red-400`}>*</span>
-                            </p>
-                            <p className={`text-right mr-3 w-96`}>
-                                <span className={``}>Giấy chứng nhận Mã số thuế:</span>
-                            </p>
-                            {/* Upload button */}
-                            <div className={`flex-1`}>
-                                <UploadButton name={`upload_2`} label={`Chọn tải hồ sơ`} mess={`Áp dụng với doanh nghiệp thành lập trước ngày 01/07/2015`} type={'giay_dkmst'} sendDataToParent={sendDataToParent} />
-                            </div>
-                        </div>
-
-                        <div className={`flex justify-start mb-9`}>
-                            {/* Row 3 */}
-                            <div className={`w-9 h-9 leading-9 rounded bg-yellow-400 font-bold text-2xl text-center mr-24`}>3</div>
-                            <p>
-                                <span className={`text-red-400`}>*</span>
-                            </p>
-                            <p className={`text-right mr-3 w-96`}>
-                                <span className={``}>Giấy tờ tùy thân của người đại diện:</span>
-                            </p>
-                            {/* Upload button */}
-                            <div className={`flex-1`}>
-                                <UploadButton name={`upload_3`} label={`Chọn tải hồ sơ`} mess={`CMND/CCCD/HC của người đại diện theo pháp luật `} type={'GTTT'} sendDataToParent={sendDataToParent} />
-                            </div>
-                        </div>
-
-                        <div className={`flex justify-start mb-9`}>
-                            {/* Row 4 */}
-                            <div className={`w-9 h-9 leading-9 rounded bg-yellow-400 font-bold text-2xl text-center mr-24`}>4</div>
-                            <p>
-                                <span className={`text-red-400`}>*</span>
-                            </p>
-                            <p className={`text-right mr-3 w-96`}>
-                                <span className={``}>Quyết định bổ nhiệm kế toán trưởng: </span>
-                            </p>
-                            {/* Upload button */}
-                            <div className={`flex-1`}>
-                                <UploadButton name={`upload_4`} label={`Chọn tải hồ sơ`} mess={`Quyết định bổ nhiệm kế toán trưởng/Người phụ trách kế toán`} type={'bonhiem_KTT'} sendDataToParent={sendDataToParent} />
-                            </div>
-                        </div>
-
-                        <div className={`flex justify-start mb-9`}>
-                            {/* Row 5 */}
-                            <div className={`w-9 h-9 leading-9 rounded bg-yellow-400 font-bold text-2xl text-center mr-24`}>5</div>
-                            <p>
-                                <span className={`text-red-400`}>*</span>
-                            </p>
-                            <p className={`text-right mr-3 w-96`}>
-                                <span className={``}>Giấy tờ tùy thân của kế toán trưởng: </span>
-                            </p>
-                            {/* Upload button */}
-                            <div className={`flex-1`}>
-                                <UploadButton name={`upload_5`} label={`Chọn tải hồ sơ`} mess={`CMND/CCCD/HC của kế toán trưởng/ Người phụ trách kế toán`} type={'GTTT_ktt'} sendDataToParent={sendDataToParent} />
-                            </div>
-                        </div>
+                    <div className={`flex justify-between`}>
+                        <p className={`text-center text-xl font-bold text-gray-500`}>Quý khách vui lòng tải/ chụp đầy đủ hồ sơ Tổ chức theo danh mục bên dưới. </p>
+                        <a href="#" className={`text-link font-bold underline`} onClick={openModalGuide}>
+                            Hướng dẫn
+                        </a>
                     </div>
-                    <div className={`text-center text-gray-300 italic font-normal`}>
-                        Lưu ý: Ảnh chụp/tải lên cần rõ nét, đầy đủ thông tin trên hồ sơ.
-                        <br />
-                        Định dạng cho phép: png,pdf,jpg,rar,zip. Kích thước tối đa: 5 MB.
+                    <p className={`text-sm text-red-500 mb-9`}>Lưu ý: Toàn bộ hồ sơ cần phải được xác nhận bằng chữ ký số khách hàng tổ chức trước khi tải lên.</p>
+                   
+                    {/* Main Content */}
+                    <div className="accordion" id="accordionExample">
+                        <div className="accordion-item border border-gray-200">
+                            <h2 className="accordion-header mb-0" id="headingOne">
+                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <span>1. Giấy chứng nhận đăng kí kinh doanh/đăng kí doanh nghiệp</span>
+                                    <span><FaCaretDown size={16}/></span>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" className={`accordion-collapse collapse ` + ((tab==`step1`) ? 'show' : '')} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <FormUpload1 />
+                            </div>
+                        </div>{/* Tab 1 */}
+
+                        <div className="accordion-item bg-white border border-gray-200">
+                            <h2 className="accordion-header mb-0" id="headingTwo">
+                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <span>2. Giấy chứng nhận mã số thuế  | *Chỉ áp dụng với DN đăng kí trước 01/07/2015</span>
+                                    <span><FaCaretDown size={16}/></span>
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" className={`accordion-collapse collapse ` + ((tab==`step2`) ? 'show' : '')} aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <FormUpload2 />
+                            </div>
+                        </div>{/* Tab 2 */}
+
+                        <div className="accordion-item bg-white border border-gray-200">
+                            <h2 className="accordion-header mb-0" id="headingThree">
+                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <span>3. Giấy tờ tuỳ thân của người đại diện</span>
+                                    <span><FaCaretDown size={16}/></span>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" className={`accordion-collapse collapse ` + ((tab==`step3`) ? 'show' : '')} aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <FormUpload3 />
+                            </div>
+                        </div>{/* Tab 3 */}
                     </div>
-                    <div className={`p-9 flex justify-between`}>
-                        <button className={`py-2 px-9 bg-gray-300 text-black rounded w-52`}>Huỷ</button>
-                        <button className={`py-2 px-9 bg-yellow-400 text-black rounded w-52`}>Đối chiếu hồ sơ</button>
-                    </div>
+                    {/* End Main Content */}
+
+
                 </div>
             </div>
-            <FileUpload></FileUpload>
         </div>
     );
 };
