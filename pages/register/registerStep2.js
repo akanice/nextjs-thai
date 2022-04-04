@@ -3,12 +3,12 @@ import { Button, Modal, Box } from '@material-ui/core';
 import { FaExclamationCircle } from 'react-icons/fa';
 import ProgressStepper from '@components/Elements/ProgressStepper';
 import { useRouter } from 'next/router';
-import {FaCaretDown} from 'react-icons/fa';
+import { FaCaretDown } from 'react-icons/fa';
 import { MdCheckCircleOutline } from 'react-icons/md';
 import FormUpload1 from '@components/Register/Step2/FormUpload1';
 import FormUpload2 from '@components/Register/Step2/FormUpload2';
 import FormUpload3 from '@components/Register/Step2/FormUpload3';
-
+import FormUpload4 from '@components/Register/Step2/FormUpload4';
 let ps;
 
 const RegisterStep2 = () => {
@@ -32,7 +32,7 @@ const RegisterStep2 = () => {
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
 
-    const [tab, setTab] = useState(`step1`); 
+    const [tab, setTab] = useState(`step1`);
 
     const sendDataToParent = (data, type) => {
         if (type == 'gpdkkd') {
@@ -120,7 +120,7 @@ const RegisterStep2 = () => {
                         </div>
                     </Box>
                 </Modal>
-                <div className="container mx-auto py-6" style={{maxWidth: "900px"}}>
+                <div className="container mx-auto py-6" style={{ maxWidth: '900px' }}>
                     <ProgressStepper page={2} />
                     <div className={`flex justify-between`}>
                         <p className={`text-center text-xl font-bold text-gray-500`}>Quý khách vui lòng tải/ chụp đầy đủ hồ sơ Tổ chức theo danh mục bên dưới. </p>
@@ -129,48 +129,69 @@ const RegisterStep2 = () => {
                         </a>
                     </div>
                     <p className={`text-sm text-red-500 mb-9`}>Lưu ý: Toàn bộ hồ sơ cần phải được xác nhận bằng chữ ký số khách hàng tổ chức trước khi tải lên.</p>
-                   
+
                     {/* Main Content */}
                     <div className="accordion" id="accordionExample">
                         <div className="accordion-item border border-gray-200">
                             <h2 className="accordion-header mb-0" id="headingOne">
-                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded={tab == 'step1' ? 'true' : 'false'} aria-controls="collapseOne">
                                     <span>1. Giấy chứng nhận đăng kí kinh doanh/đăng kí doanh nghiệp</span>
-                                    <span><FaCaretDown size={16}/></span>
+                                    <span>
+                                        <FaCaretDown size={16} />
+                                    </span>
                                 </button>
                             </h2>
-                            <div id="collapseOne" className={`accordion-collapse collapse ` + ((tab==`step1`) ? 'show' : '')} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <FormUpload1 />
+                            <div id="collapseOne" className={`accordion-collapse collapse ` + (tab == `step1` ? 'show' : '')} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <FormUpload1 setTab={setTab} />
                             </div>
-                        </div>{/* Tab 1 */}
+                        </div>
+                        {/* Tab 1 */}
 
                         <div className="accordion-item bg-white border border-gray-200">
                             <h2 className="accordion-header mb-0" id="headingTwo">
-                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <span>2. Giấy chứng nhận mã số thuế  | *Chỉ áp dụng với DN đăng kí trước 01/07/2015</span>
-                                    <span><FaCaretDown size={16}/></span>
+                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded={tab == 'step2' ? 'true' : 'false'} aria-controls="collapseTwo">
+                                    <span>2. Giấy chứng nhận mã số thuế | *Chỉ áp dụng với DN đăng kí trước 01/07/2015</span>
+                                    <span>
+                                        <FaCaretDown size={16} />
+                                    </span>
                                 </button>
                             </h2>
-                            <div id="collapseTwo" className={`accordion-collapse collapse ` + ((tab==`step2`) ? 'show' : '')} aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <FormUpload2 />
+                            <div id="collapseTwo" className={`accordion-collapse collapse ` + (tab == `step2` ? 'show' : '')} aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <FormUpload2 setTab={setTab} />
                             </div>
-                        </div>{/* Tab 2 */}
+                        </div>
+                        {/* Tab 2 */}
 
                         <div className="accordion-item bg-white border border-gray-200">
                             <h2 className="accordion-header mb-0" id="headingThree">
-                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded={tab == 'step3' ? 'true' : 'false'} aria-controls="collapseThree">
                                     <span>3. Giấy tờ tuỳ thân của người đại diện</span>
-                                    <span><FaCaretDown size={16}/></span>
+                                    <span>
+                                        <FaCaretDown size={16} />
+                                    </span>
                                 </button>
                             </h2>
-                            <div id="collapseThree" className={`accordion-collapse collapse ` + ((tab==`step3`) ? 'show' : '')} aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                <FormUpload3 />
+                            <div id="collapseThree" className={`accordion-collapse collapse ` + (tab == `step3` ? 'show' : '')} aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <FormUpload3 setTab={setTab} />
                             </div>
-                        </div>{/* Tab 3 */}
+                        </div>
+                        {/* Tab 3 */}
+                        <div className="accordion-item bg-white border border-gray-200">
+                            <h2 className="accordion-header mb-0" id="headingThree">
+                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded={tab == 'step3' ? 'true' : 'false'} aria-controls="collapseThree">
+                                    <span>4. Giấy tờ quyết định bổ nhiệm và giấy tờ tuỳ thân kế toán trưởng</span>
+                                    <span>
+                                        <FaCaretDown size={16} />
+                                    </span>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" className={`accordion-collapse collapse ` + (tab == `step4` ? 'show' : '')} aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <FormUpload4 setTab={setTab} />
+                            </div>
+                        </div>
+                        {/* Tab 4 */}
                     </div>
                     {/* End Main Content */}
-
-
                 </div>
             </div>
         </div>

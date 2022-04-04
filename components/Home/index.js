@@ -19,7 +19,7 @@ const Home = () => {
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
     const nextPage = () => {
-        router.push('/register');
+        router.push('/register/registerStep2');
     };
 
     return (

@@ -4,7 +4,7 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import { FiTrash } from 'react-icons/fi';
 import { UploadFile } from '@mui/icons-material';
 import axios from 'axios';
-const UploadImageButton = ({ label, mess, name, type, className, sendDataToParent }) => {
+const UploadImageButton = ({ type, sendDataToParent, className, label, mess, name }) => {
     const data = {
         sample_img: '',
         name: ''
@@ -50,7 +50,7 @@ const UploadImageButton = ({ label, mess, name, type, className, sendDataToParen
             // setUploadedFile({ fileName, filePath });
             setMessage(JSON.stringify(res.data), undefined, 4);
             console.log(JSON.stringify(res.data));
-            sendDataToParent(res.data, type);
+            sendDataToParent(type, res.data);
         } catch (err) {
             console.log(err);
             if (err.response && err.response.status == 500) {
