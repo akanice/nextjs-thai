@@ -11,7 +11,7 @@ const MainLayout = ({ children, title }) => {
 
   return (
     <div className={`bg-main-bg`}>
-      <Head title={`SuperJOI - ${title}`} />
+      <Head title={`PVComBank - ${title}`} />
       <Header className={`mb-12`} />
       <div className={`px-5 pt-32`}>{children}</div>
       <ChargeModal show={showChargeModal} />
