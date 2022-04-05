@@ -1,11 +1,21 @@
-import { Box } from '@mui/material';
+import { Button, Modal, Box } from '@material-ui/core';
+import { FaExclamationCircle } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import UploadImageButton from '@components/Common/UploadImageButton';
 import FormInput2 from '@components/Common/FormInput2';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import FormSelect2 from '@components/Common/FormSelect2';
-
+import ReactLoading from 'react-loading';
 const FormUpload1 = ({ setTab, options, name, label, defaultValue, className }) => {
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        bgcolor: 'background.paper',
+        border: '1px solid #ccc',
+        boxShadow: 24
+    };
     const img1 = '/images/icon-check.png';
     const img2 = '/images/icon-uncheck.png';
     const field = [
@@ -13,20 +23,27 @@ const FormUpload1 = ({ setTab, options, name, label, defaultValue, className }) 
         { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
     ];
     const [data, setData] = useState({});
-    const sendDataToParent = ({ type, res }) => {
+    const [loading, setLoading] = useState(false);
+    const sendDataToParent = (type, res) => {
         setData(res);
         console.log('test res');
         console.log(res);
+        console.log(type);
     };
     return (
         <>
+            <Modal open={loading} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                <Box sx={style} className={`px-36 py-9`}>
+                    <ReactLoading type="cylon" color="#0000FF" height={100} width={50} />
+                </Box>
+            </Modal>
             <div className="accordion-body py-4 px-5">
                 <div className={`flex justify-between mb-6`}>
                     <div className={`bg-zinc-300 rounded flex items-center`}>
                         <div className={`flex justify-between items-center bg-zinc-300 rounded p-3`}>
                             <div className={`h-24 w-36 bg-white block mr-3`}></div>
                             <div>
-                                <UploadImageButton type={'gpdkkd'} sendDataToParent={sendDataToParent} name={`upload_2`} label={`UPLOAD ẢNH`} className={`mb-2`} />
+                                <UploadImageButton type={'gpdkkd'} sendDataToParent={sendDataToParent} name={`upload_2`} label={`UPLOAD ẢNH`} className={`mb-2`} setLoading={setLoading} />
                                 <div className={`flex items-center mb-1`}>
                                     <AiOutlineCheckCircle size={12} className={`mr-2`} /> Định dạng: png, jpg, jpeg, tif, pdf
                                 </div>

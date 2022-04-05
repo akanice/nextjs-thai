@@ -3,12 +3,9 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { FiTrash } from 'react-icons/fi';
 import { UploadFile } from '@mui/icons-material';
+import ReactLoading from 'react-loading';
 import axios from 'axios';
-const UploadImageButton = ({ type, sendDataToParent, className, label, mess, name }) => {
-    const data = {
-        sample_img: '',
-        name: ''
-    };
+const UploadImageButton = ({ type, sendDataToParent, className, label, mess, name, setLoading }) => {
     const [file, setFile] = useState('');
     const [filepath, setFilePath] = useState('');
     const [filename, setFilename] = useState('Choose File');
@@ -32,6 +29,7 @@ const UploadImageButton = ({ type, sendDataToParent, className, label, mess, nam
     };
     const onSubmit = async (e) => {
         try {
+            setLoading(true);
             const formData = new FormData();
             formData.append('file', file);
             console.log('select file ' + filename);
@@ -46,12 +44,12 @@ const UploadImageButton = ({ type, sendDataToParent, className, label, mess, nam
                     setTimeout(() => setUploadPercentage(0), 10000);
                 }
             });
-            //const { fileName, filePath } = res.data;
-            // setUploadedFile({ fileName, filePath });
             setMessage(JSON.stringify(res.data), undefined, 4);
-            console.log(JSON.stringify(res.data));
+            console.log(res);
             sendDataToParent(type, res.data);
+            setLoading(false);
         } catch (err) {
+            setLoading(false);
             console.log(err);
             if (err.response && err.response.status == 500) {
                 setMessage('There was a problem witht he server');

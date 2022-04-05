@@ -1,10 +1,20 @@
-import { Box } from '@mui/material';
+import { Button, Modal, Box } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import UploadImageButton from '@components/Common/UploadImageButton';
 import FormInput2 from '@components/Common/FormInput2';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import FormSelect2 from '@components/Common/FormSelect2';
+import ReactLoading from 'react-loading';
 const FormUpload4 = ({ setTab, options, name, label, defaultValue, className }) => {
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        bgcolor: 'background.paper',
+        border: '1px solid #ccc',
+        boxShadow: 24
+    };
     const img1 = '/images/icon-check.png';
     const img2 = '/images/icon-uncheck.png';
     const field = [
@@ -12,18 +22,30 @@ const FormUpload4 = ({ setTab, options, name, label, defaultValue, className }) 
         { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
     ];
     const [data, setData] = useState({});
-    const sendDataToParent = ({ type, res }) => {
-        setData(res);
+    const [data2, setData2] = useState({});
+    const sendDataToParent = (type, res) => {
+        if (type == 'GTTT') {
+            setData(res);
+        }
+        if (type == 'GBNKTT') {
+            setData2(res);
+        }
     };
+    const [loading, setLoading] = useState(false);
     return (
         <>
+            <Modal open={loading} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                <Box sx={style} className={`px-36 py-9`}>
+                    <ReactLoading type="cylon" color="#0000FF" height={100} width={50} />
+                </Box>
+            </Modal>
             <div className="accordion-body py-4 px-5" style={{ backgroundColor: '#E5E5E5' }}>
                 <div className={`flex justify-between mb-6`}>
                     <div className={`bg-zinc-300 rounded flex items-center`}>
                         <div className={`flex justify-between items-center bg-zinc-300 rounded p-3`}>
                             <div className={`h-24 w-36 bg-white block mr-3`}></div>
                             <div>
-                                <UploadImageButton name={`upload_2`} label={`UPLOAD ẢNH`} type={''} className={`mb-2`} />
+                                <UploadImageButton type={'GTTT'} sendDataToParent={sendDataToParent} name={`upload_2`} label={`UPLOAD ẢNH`} className={`mb-2`} setLoading={setLoading} />
                                 <div className={`flex items-center mb-1`}>
                                     <AiOutlineCheckCircle size={12} className={`mr-2`} /> Định dạng: png, jpg, jpeg, tif, pdf
                                 </div>
@@ -37,7 +59,7 @@ const FormUpload4 = ({ setTab, options, name, label, defaultValue, className }) 
                     <div className={`flex justify-between items-center bg-zinc-300 rounded p-3`}>
                         <div className={`h-24 w-36 bg-white block mr-3`}></div>
                         <div>
-                            <UploadImageButton name={`upload_2`} label={`UPLOAD ẢNH`} type={''} className={`mb-2`} />
+                            <UploadImageButton type={'GBNKTT'} sendDataToParent={sendDataToParent} name={`upload_2`} label={`UPLOAD ẢNH`} className={`mb-2`} setLoading={setLoading} />
                             <div className={`flex items-center mb-1`}>
                                 <AiOutlineCheckCircle size={12} className={`mr-2`} /> Định dạng: png, jpg, jpeg, tif, pdf
                             </div>
@@ -50,18 +72,18 @@ const FormUpload4 = ({ setTab, options, name, label, defaultValue, className }) 
                 <div>
                     <div className={`grid grid-cols-2 gap-4`}>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`Công ty cổ phần ABC`} value={``} />
+                            <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`Công ty cổ phần ABC`} value={data?.name} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Ngày tháng năm sinh`} placeholder={``} value={``} />
+                            <FormInput2 name={`name_7`} label={`Ngày tháng năm sinh`} placeholder={``} value={data?.birthday} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4`}>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Số CMND/CCCD`} placeholder={`1228392389`} value={``} />
+                            <FormInput2 name={`name_6`} label={`Số CMND/CCCD`} placeholder={`1228392389`} value={data?.id} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Ngày cấp`} placeholder={``} value={``} />
+                            <FormInput2 name={`name_7`} label={`Ngày cấp`} placeholder={``} value={data?.issue_date} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4 mb-3`}>
