@@ -126,8 +126,8 @@ const FormUpload1 = ({ setTab, options, name, label, defaultValue, className }) 
                             <FormSelect2 label={`Doanh thu năm gần nhất`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
                         </div>
                     </div>
-                    <div class="py-4">
-                        <div class="w-full border-t border-gray-300"></div>
+                    <div className="py-4">
+                        <div className="w-full border-t border-gray-300"></div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4`}>
                         <div className={''}>
@@ -137,8 +137,8 @@ const FormUpload1 = ({ setTab, options, name, label, defaultValue, className }) 
                             <FormInput2 name={`name_7`} label={`Tên tài khoản đăng kí với ngân hàng - tiếng Anh`} placeholder={``} value={``} />
                         </div>
                     </div>
-                    <div class="py-4">
-                        <div class="w-full border-t border-gray-300"></div>
+                    <div className="py-4">
+                        <div className="w-full border-t border-gray-300"></div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4 mb-6`}>
                         <div className={''}>

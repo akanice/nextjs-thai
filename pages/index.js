@@ -14,8 +14,12 @@
 // export default _Home;
 
 import React, { useEffect, useState } from 'react';
-
+import { useRouter } from 'next/router';
 const Register = () => {
+    const router = useRouter();
+    const nextPage = () => {
+        router.push('/register/registerStep2');
+    };
     return (
         <div className={`p-6`}>
             <div className={``}>
@@ -134,7 +138,7 @@ const Register = () => {
                                     </select>
                                 </div>
                                 <div className="flex items-center justify-center">
-                                    <button className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="button">
+                                    <button onClick={nextPage} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="button">
                                         Tiếp tục
                                     </button>
                                 </div>
