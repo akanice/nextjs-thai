@@ -22,14 +22,11 @@ const FormUpload4 = ({ setTab, options, name, label, defaultValue, className }) 
         { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
     ];
     const [data, setData] = useState({});
-    const [data2, setData2] = useState({});
     const sendDataToParent = (type, res) => {
-        if (type == 'GTTT') {
-            setData(res);
-        }
-        if (type == 'GBNKTT') {
-            setData2(res);
-        }
+        setData(res);
+        console.log('test res');
+        console.log(res);
+        console.log(type);
     };
     const [loading, setLoading] = useState(false);
     return (
@@ -56,15 +53,32 @@ const FormUpload4 = ({ setTab, options, name, label, defaultValue, className }) 
                         </div>
                     </div>
                     <div className={`border-r border-gray-300 mx-3`}>&nbsp;</div>
-                    <div className={`flex justify-between items-center bg-zinc-300 rounded p-3`}>
-                        <div className={`h-24 w-36 bg-white block mr-3`}></div>
-                        <div>
-                            <UploadImageButton type={'GBNKTT'} sendDataToParent={sendDataToParent} name={`upload_2`} label={`UPLOAD ẢNH`} className={`mb-2`} setLoading={setLoading} />
-                            <div className={`flex items-center mb-1`}>
-                                <AiOutlineCheckCircle size={12} className={`mr-2`} /> Định dạng: png, jpg, jpeg, tif, pdf
+                    <div className={``}>
+                        <div className={`font-bold mb-3`}>Mô tả</div>
+                        <div className={`flex justify-between items-center`}>
+                            <div className={`flex flex-col justify-between items-center mr-3`}>
+                                <img src={img1} width={68} />
+                                <span className={`text-center`}>
+                                    Ảnh chụp đúng
+                                    <br />
+                                    yêu cầu
+                                </span>
                             </div>
-                            <div className={`flex items-center mb-1`}>
-                                <AiOutlineCheckCircle size={12} className={`mr-2`} /> Dung lượng: Từ 500KB đến 5MB
+                            <div className={`flex flex-col justify-between items-center mr-3`}>
+                                <img src={img2} width={68} />
+                                <span className={`text-center`}>
+                                    Ảnh chụp thẳng
+                                    <br />
+                                    không chụp nghiêng
+                                </span>
+                            </div>
+                            <div className={`flex flex-col justify-between items-center`}>
+                                <img src={img2} width={68} />
+                                <span className={`text-center`}>
+                                    Ảnh chụp không
+                                    <br />
+                                    bị loá sáng
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -91,7 +105,7 @@ const FormUpload4 = ({ setTab, options, name, label, defaultValue, className }) 
                             <FormInput2 name={`name_6`} label={`Nơi cấp`} placeholder={`Công ty cổ phần ABC`} value={``} />
                         </div>
                         <div className={''}>
-                            <FormSelect2 label={`Nơi cấp`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
+                            <FormSelect2 label={`Quốc tịch`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4`}>
@@ -107,16 +121,11 @@ const FormUpload4 = ({ setTab, options, name, label, defaultValue, className }) 
                             <FormInput2 name={`name_6`} label={`E-mail`} placeholder={`1228392389`} value={``} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Địa chỉ thường trú`} placeholder={``} value={``} />
+                            <FormInput2 name={`name_7`} label={`Địa chỉ thường trú`} placeholder={``} value={data?.address} />
                         </div>
                     </div>
-                    <div className={`grid grid-cols-2 gap-4`}>
-                        <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Địa chỉ liên lạc`} placeholder={`1228392389`} value={``} />
-                        </div>
-                        <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Quốc tịch`} placeholder={``} value={``} />
-                        </div>
+                    <div className={''}>
+                        <FormInput2 name={`name_6`} label={`Địa chỉ liên lạc`} placeholder={`1228392389`} value={data?.address} />
                     </div>
                     <div>
                         <button className={`py-2 px-9 bg-yellow-400 font-bold text-black rounded w-52`} onClick={() => setTab('step4')}>

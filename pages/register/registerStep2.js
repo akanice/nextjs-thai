@@ -9,6 +9,7 @@ import FormUpload1 from '@components/Register/Step2/FormUpload1';
 import FormUpload2 from '@components/Register/Step2/FormUpload2';
 import FormUpload3 from '@components/Register/Step2/FormUpload3';
 import FormUpload4 from '@components/Register/Step2/FormUpload4';
+import FormUpload5 from '@components/Register/Step2/FormUpload5';
 let ps;
 
 const RegisterStep2 = () => {
@@ -31,44 +32,8 @@ const RegisterStep2 = () => {
     const [openModal, setOpenModal] = useState(false);
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
+
     const [tab, setTab] = useState(`step1`);
-    const sendDataToParent = (data, type) => {
-        if (type == 'gpdkkd') {
-            setGpdkkd(data);
-        }
-        if (type == 'GTTT') {
-            setGttt(data);
-        }
-        if (type == 'bonhiem_KTT') {
-            setBonhiem(data);
-        }
-        if (type == 'GTTT_ktt') {
-            setGtttktt(data);
-        }
-    };
-    useEffect(() => {
-        // if (gpdkkd != null && bonhiem != null) {
-        //     if (gpdkkd.company_name == bonhiem.company_name) {
-        //         setMatch1(true);
-        //     } else {
-        //         setMatch1(false);
-        //     }
-        // }
-        // if (gpdkkd != null && gttt != null) {
-        //     if (gpdkkd.company_name == bonhiem.company_name) {
-        //         setMatch2(true);
-        //     } else {
-        //         setMatch2(false);
-        //     }
-        // }
-        // if (bonhiem.web_data.name != null && gtttktt.name != null) {
-        //     if (gpdkkd.company_name == bonhiem.company_name) {
-        //         setMatch3(true);
-        //     } else {
-        //         setMatch3(false);
-        //     }
-        // }
-    }, [gpdkkd, gttt, bonhiem, gtttktt]);
     return (
         <div className={`p-6`}>
             <div className={``}>
@@ -177,7 +142,7 @@ const RegisterStep2 = () => {
                         <div className="accordion-item bg-white border border-gray-200">
                             <h2 className="accordion-header mb-0" id="headingThree">
                                 <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded={tab == 'step3' ? 'true' : 'false'} aria-controls="collapseThree">
-                                    <span>4. Giấy tờ quyết định bổ nhiệm và giấy tờ tuỳ thân kế toán trưởng</span>
+                                    <span>4. Giấy tờ tuỳ thân kế toán trưởng</span>
                                     <span>
                                         <FaCaretDown size={16} />
                                     </span>
@@ -185,6 +150,20 @@ const RegisterStep2 = () => {
                             </h2>
                             <div id="collapseThree" className={`accordion-collapse collapse ` + (tab == `step4` ? 'show' : '')} aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                 <FormUpload4 setTab={setTab} />
+                            </div>
+                        </div>
+                        {/* Tab 4 */}
+                        <div className="accordion-item bg-white border border-gray-200">
+                            <h2 className="accordion-header mb-0" id="headingThree">
+                                <button className="relative flex items-center w-full py-3 px-5 text-base text-white flex justify-between items-center bg-main-color border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded={tab == 'step3' ? 'true' : 'false'} aria-controls="collapseThree">
+                                    <span>5. Giấy tờ bổ nhiệm kế toán trưởng</span>
+                                    <span>
+                                        <FaCaretDown size={16} />
+                                    </span>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" className={`accordion-collapse collapse ` + (tab == `step4` ? 'show' : '')} aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <FormUpload5 setTab={setTab} />
                             </div>
                         </div>
                         {/* Tab 4 */}

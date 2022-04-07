@@ -1,12 +1,11 @@
 import { Button, Modal, Box } from '@material-ui/core';
-import { FaExclamationCircle } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import UploadImageButton from '@components/Common/UploadImageButton';
 import FormInput2 from '@components/Common/FormInput2';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import FormSelect2 from '@components/Common/FormSelect2';
 import ReactLoading from 'react-loading';
-const FormUpload2 = ({ setTab, options, name, label, defaultValue, className }) => {
+const FormUpload5 = ({ setTab, options, name, label, defaultValue, className }) => {
     const style = {
         position: 'absolute',
         top: '50%',
@@ -43,7 +42,7 @@ const FormUpload2 = ({ setTab, options, name, label, defaultValue, className }) 
                         <div className={`flex justify-between items-center bg-zinc-300 rounded p-3`}>
                             <div className={`h-24 w-36 bg-white block mr-3`}></div>
                             <div>
-                                <UploadImageButton type={'giay_dkmst'} sendDataToParent={sendDataToParent} name={`upload_2`} label={`UPLOAD ẢNH`} className={`mb-2`} setLoading={setLoading} />
+                                <UploadImageButton type={'gtbnkttt'} sendDataToParent={sendDataToParent} name={`upload_2`} label={`UPLOAD ẢNH`} className={`mb-2`} setLoading={setLoading} />
                                 <div className={`flex items-center mb-1`}>
                                     <AiOutlineCheckCircle size={12} className={`mr-2`} /> Định dạng: png, jpg, jpeg, tif, pdf
                                 </div>
@@ -87,30 +86,30 @@ const FormUpload2 = ({ setTab, options, name, label, defaultValue, className }) 
                 <div>
                     <div className={`grid grid-cols-2 gap-4`}>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Mã số người nộp thuế`} placeholder={`Công ty cổ phần ABC`} value={data?.tax_number} />
+                            <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`Công ty cổ phần ABC`} value={data?.name} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Ngày hoạt động`} placeholder={``} value={data?.issue_date} />
+                            <FormInput2 name={`name_7`} label={`Thời hạn bổ nhiệm`} placeholder={``} value={data?.appointment_from} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4`}>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Mã số chứng nhận đăng kí doanh kinh doanh`} placeholder={`1228392389`} value={data?.business_registration_number} />
+                            <FormInput2 name={`name_6`} label={`Số CMND/CCCD`} placeholder={`1228392389`} value={''} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Ngày cấp CMND`} placeholder={``} value={``} />
+                            <FormInput2 name={`name_7`} label={`Ngày cấp`} placeholder={``} value={''} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4 mb-3`}>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Ngày cấp MST`} placeholder={`Công ty cổ phần ABC`} value={data?.appointment_from} />
+                            <FormInput2 name={`name_6`} label={`Nơi cấp`} placeholder={`Công ty cổ phần ABC`} value={``} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Cơ quan thuế quản lý trức tiếp`} placeholder={`Công ty cổ phần ABC`} value={data?.issue_place} />
+                            <FormInput2 name={`name_6`} label={`Chức vụ bổ nhiệm`} placeholder={`Công ty cổ phần ABC`} value={data?.appointment_position} />
                         </div>
                     </div>
                     <div>
-                        <button className={`py-2 px-9 bg-yellow-400 font-bold text-black rounded w-52`} onClick={() => setTab('step3')}>
+                        <button className={`py-2 px-9 bg-yellow-400 font-bold text-black rounded w-52`} onClick={() => setTab('step4')}>
                             Tiếp tục
                         </button>
                     </div>
@@ -120,4 +119,4 @@ const FormUpload2 = ({ setTab, options, name, label, defaultValue, className }) 
     );
 };
 
-export default FormUpload2;
+export default FormUpload5;
