@@ -26,7 +26,7 @@ const RegisterLayout = ({ children, title }) => {
         <>
             <div className={`bg-white`}>
                 <Head title={`Bank - ${title}`} />
-                {/* <Header className={`mb-12`} /> */}
+                <Header className={`mb-12`} />
                 <div className={`wrapper top-0 relative h-screen min-h-screen`}>
                     <LeftColumn />
                     <div className={`h-screen relative float-right flex justify-center`} style={{ width: 'calc(100% - 300px)', 'overflow-y': 'scroll' }} ref={mainPanel}>
