@@ -1,21 +1,20 @@
-import Header from '../Header/Superfan';
-import Head from '../Common/Head';
-import { useSelector } from 'react-redux';
-import ChargeModal from '../Account/Creator/Element/ChargeModal';
-import WatchListModal from 'components/WatchList/WatchListModal';
-import SaveCampaignToWatchlistModal from 'components/WatchList/SaveCampaignToWatchlistModal';
 import React from 'react';
+import Header from '/components/Header';
+import Head from '../Common/Head';
+import Breadcrumb from '@components/Header/Breadcrumb';
 
 const MainLayout = ({ children, title }) => {
-    const showChargeModal = useSelector((state) => state.payment?.showChargeModal);
 
     return (
-        <div className={`bg-main-bg`}>
+        <div className={`bg-white min-h-screen`}>
             <Head title={`PVComBank - ${title}`} />
-            <Header className={`mb-12`} />
-            <div className={`px-5 pt-32`}>{children}</div>
-            <ChargeModal show={showChargeModal} />
-            <WatchListModal />
+            <Header />
+            <Breadcrumb />
+            <div className={`-mt-24`}>
+                <div className={`bg-white container p-9 mx-auto`}>
+                    {children}
+                </div>
+            </div>
         </div>
     );
 };
