@@ -102,7 +102,7 @@ const FormUpload3 = ({ setTab, options, name, label, defaultValue, className }) 
                     </div>
                     <div className={`grid grid-cols-2 gap-4 mb-3`}>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Nơi cấp`} placeholder={`Công ty cổ phần ABC`} value={``} />
+                            <FormInput2 name={`name_6`} label={`Nơi cấp`} placeholder={`Công ty cổ phần ABC`} value={data?.issue_by} />
                         </div>
                         <div className={''}>
                             <FormSelect2 label={`Quốc tịch`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
@@ -125,7 +125,7 @@ const FormUpload3 = ({ setTab, options, name, label, defaultValue, className }) 
                         </div>
                     </div>
                     <div className={''}>
-                        <FormInput2 name={`name_6`} label={`Địa chỉ liên lạc`} placeholder={`1228392389`} value={data?.address} />
+                        <FormInput2 name={`name_6`} label={`Địa chỉ liên lạc`} placeholder={`1228392389`} value={data?.address} disabled={false} />
                     </div>
                     <div>
                         <button className={`py-2 px-9 bg-yellow-400 font-bold text-black rounded w-52`} onClick={() => setTab('step4')}>

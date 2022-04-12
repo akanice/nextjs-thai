@@ -6,7 +6,7 @@ import FormInput2 from '@components/Common/FormInput2';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import FormSelect2 from '@components/Common/FormSelect2';
 import ReactLoading from 'react-loading';
-const FormUpload1 = ({ setTab, options, name, label, defaultValue, className }) => {
+const FormUpload1 = ({ setTab, setOpenModalWarning, options, name, label, defaultValue, className }) => {
     const style = {
         position: 'absolute',
         top: '50%',
@@ -29,6 +29,13 @@ const FormUpload1 = ({ setTab, options, name, label, defaultValue, className }) 
         console.log('test res');
         console.log(res);
         console.log(type);
+    };
+    const [user, setUser] = useState(false);
+    const onChangeUS = (e) => {
+        setOpenModalWarning(e.target.checked);
+    };
+    const onChangeUser = (e) => {
+        setUser(!user);
     };
     return (
         <>
@@ -149,7 +156,7 @@ const FormUpload1 = ({ setTab, options, name, label, defaultValue, className }) 
                         </div>
                     </div>
                     <div className={`flex items-center mb-3`}>
-                        <input className={`form-check-input appearance-none h-4 w-4 border-2 border-gray-400 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 shrink-0`} type="checkbox" defaultValue="" id="flexCheckChecked" />
+                        <input className={`form-check-input appearance-none h-4 w-4 border-2 border-gray-400 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 shrink-0`} onChange={onChangeUS} type="checkbox" defaultValue="" id="flexCheckChecked" />
                         <label htmlFor="flexCheckChecked" className={`text-link font-bold cursor-pointer`}>
                             Thông tin Khách hàng tại Hoa Kỳ (FATCA)
                         </label>
@@ -157,32 +164,38 @@ const FormUpload1 = ({ setTab, options, name, label, defaultValue, className }) 
                     <div className={`ml-6 text-sm mb-3`}>Tố chức được thành lập tại Mỹ hoặc chi nhánh Mỹ của một tổ chức thành lập ngoài Mỹ – Vui lòng điền mẫu đơn W-9 dành cho tổ chức | US legal entity or US-branch of foreign legal entity - W-9 form needed</div>
 
                     <div className={`flex items-center mb-3`}>
-                        <input className={`form-check-input appearance-none h-4 w-4 border-2 border-gray-400 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 shrink-0`} type="checkbox" defaultValue="" id="flexCheckChecked" />
+                        <input className={`form-check-input appearance-none h-4 w-4 border-2 border-gray-400 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 shrink-0`} onChange={onChangeUser} type="checkbox" defaultValue="" id="flexCheckChecked" />
                         <label htmlFor="flexCheckChecked" className={`text-link font-bold cursor-pointer`}>
                             Thông tin về chủ sở hữu hưởng lợi
                         </label>
                     </div>
-                    <div className={`grid grid-cols-2 gap-4`}>
-                        <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`Công ty cổ phần ABC`} value={data?.boss_name} />
+                    {user ? (
+                        <div>
+                            <div className={`grid grid-cols-2 gap-4`}>
+                                <div className={''}>
+                                    <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`Công ty cổ phần ABC`} value={data?.boss_name} />
+                                </div>
+                                <div className={''}>
+                                    <FormInput2 name={`name_7`} label={`Số CMND/CCCD`} placeholder={`1228392389`} value={data?.boss_id_number} />
+                                </div>
+                            </div>
+                            <div className={`grid grid-cols-2 gap-4`}>
+                                <div className={''}>
+                                    <FormInput2 name={`name_6`} label={`Số điện thoại di động`} placeholder={`Công ty cổ phần ABC`} value={``} />
+                                </div>
+                                <div className={''}>
+                                    <FormInput2 name={`name_7`} label={`Địa chỉ liên lạc`} placeholder={`1228392389`} value={data?.boss_current_address} />
+                                </div>
+                            </div>
+                            <div className={`grid grid-cols-2 gap-4 mb-3`}>
+                                <div className={''}>
+                                    <FormInput2 name={`name_6`} label={`Quốc tịch`} placeholder={`Công ty cổ phần ABC`} value={``} />
+                                </div>
+                            </div>
                         </div>
-                        <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Số CMND/CCCD`} placeholder={`1228392389`} value={data?.boss_id_number} />
-                        </div>
-                    </div>
-                    <div className={`grid grid-cols-2 gap-4`}>
-                        <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Số điện thoại di động`} placeholder={`Công ty cổ phần ABC`} value={``} />
-                        </div>
-                        <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Địa chỉ liên lạc`} placeholder={`1228392389`} value={data?.boss_current_address} />
-                        </div>
-                    </div>
-                    <div className={`grid grid-cols-2 gap-4 mb-3`}>
-                        <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Quốc tịch`} placeholder={`Công ty cổ phần ABC`} value={``} />
-                        </div>
-                    </div>
+                    ) : (
+                        <></>
+                    )}
                     <div>
                         <button className={`py-2 px-9 bg-yellow-400 font-bold text-black rounded w-52`} onClick={() => setTab('step2')}>
                             Tiếp tục

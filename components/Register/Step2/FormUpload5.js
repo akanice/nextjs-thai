@@ -89,7 +89,7 @@ const FormUpload5 = ({ setTab, options, name, label, defaultValue, className }) 
                             <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`Công ty cổ phần ABC`} value={data?.name} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Thời hạn bổ nhiệm`} placeholder={``} value={data?.appointment_from} />
+                            <FormInput2 name={`name_7`} label={`Thời hạn bổ nhiệm`} placeholder={``} value={data?.appointment_duration} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4`}>
@@ -97,12 +97,12 @@ const FormUpload5 = ({ setTab, options, name, label, defaultValue, className }) 
                             <FormInput2 name={`name_6`} label={`Số CMND/CCCD`} placeholder={`1228392389`} value={''} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Ngày cấp`} placeholder={``} value={''} />
+                            <FormInput2 name={`name_7`} label={`Ngày cấp`} placeholder={``} value={data?.appointment_from} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4 mb-3`}>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Nơi cấp`} placeholder={`Công ty cổ phần ABC`} value={``} />
+                            <FormInput2 name={`name_6`} label={`Nơi cấp`} placeholder={`Công ty cổ phần ABC`} value={data?.company_name} />
                         </div>
                         <div className={''}>
                             <FormInput2 name={`name_6`} label={`Chức vụ bổ nhiệm`} placeholder={`Công ty cổ phần ABC`} value={data?.appointment_position} />
