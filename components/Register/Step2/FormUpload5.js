@@ -102,7 +102,7 @@ const FormUpload5 = ({ setTab, options, name, label, defaultValue, className }) 
                     </div>
                     <div className={`grid grid-cols-2 gap-4 mb-3`}>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Nơi cấp`} placeholder={`Công ty cổ phần ABC`} value={``} />
+                            <FormInput2 name={`name_6`} label={`Nơi cấp`} placeholder={`Công ty cổ phần ABC`} value={data?.company_name} />
                         </div>
                         <div className={''}>
                             <FormInput2 name={`name_6`} label={`Chức vụ bổ nhiệm`} placeholder={`Công ty cổ phần ABC`} value={data?.appointment_position} />
