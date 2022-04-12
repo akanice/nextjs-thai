@@ -90,7 +90,7 @@ const FormUpload2 = ({ setTab, options, name, label, defaultValue, className }) 
                             <FormInput2 name={`name_6`} label={`Mã số người nộp thuế`} placeholder={`Công ty cổ phần ABC`} value={data?.tax_number} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Ngày hoạt động`} placeholder={``} value={data?.issue_date} />
+                            <FormInput2 name={`name_7`} label={`Ngày hoạt động`} placeholder={``} value={''} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-4`}>
@@ -103,7 +103,7 @@ const FormUpload2 = ({ setTab, options, name, label, defaultValue, className }) 
                     </div>
                     <div className={`grid grid-cols-2 gap-4 mb-3`}>
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Ngày cấp MST`} placeholder={`Công ty cổ phần ABC`} value={data?.appointment_from} />
+                            <FormInput2 name={`name_6`} label={`Ngày cấp MST`} placeholder={`Công ty cổ phần ABC`} value={data?.issue_date} />
                         </div>
                         <div className={''}>
                             <FormInput2 name={`name_6`} label={`Cơ quan thuế quản lý trức tiếp`} placeholder={`Công ty cổ phần ABC`} value={data?.issue_place} />

@@ -30,13 +30,21 @@ const RegisterStep2 = () => {
     const [match_2, setMatch2] = useState(null);
     const [match_3, setMatch3] = useState(null);
     const [openModal, setOpenModal] = useState(false);
+    const [openModalWarning, setOpenModalWarning] = useState(false);
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
 
+    const openModalWarningAction = () => setOpenModalWarning(true);
+    const closeModalWarningAction = () => setOpenModalWarning(false);
     const [tab, setTab] = useState(`step1`);
     return (
         <div className={`p-6`}>
             <div className={``}>
+                <Modal open={openModalWarning} onClose={closeModalWarningAction} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                    <Box className={`px-16 py-9 custom-modal`}>
+                        <h6>Khach hang nay deo support</h6>
+                    </Box>
+                </Modal>
                 <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                     <Box sx={style} className={`px-36 py-9`}>
                         <div className={`flex flex-col justify-center`}>
@@ -105,7 +113,7 @@ const RegisterStep2 = () => {
                                 </button>
                             </h2>
                             <div id="collapseOne" className={`accordion-collapse collapse ` + (tab == `step1` ? 'show' : '')} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <FormUpload1 setTab={setTab} />
+                                <FormUpload1 setTab={setTab} setOpenModalWarning={setOpenModalWarning} />
                             </div>
                         </div>
                         {/* Tab 1 */}
