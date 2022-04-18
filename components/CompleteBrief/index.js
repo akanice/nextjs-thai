@@ -13,7 +13,7 @@ const CompleteBrief = (page) => {
     return (
         <>
             <ProgressStepper page={2}/>
-            <div className={`border-b border-gray-100 my-3`}></div>
+            <div className={`border-b border-dashed border-gray-300 mb-9`}></div>
 
             <h1 className={`font-bold text-center text-xl text-black mb-2`}>Hoàn thiện hồ sơ tổ chức theo danh mục bên dưới</h1>
             <p className={`text-black text-center mb-6`}>Toàn bộ hồ sơ cần phải được xác nhận bằng chữ ký số khách hàng tổ chức trước khi tải lên</p>

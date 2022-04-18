@@ -6,7 +6,7 @@ const Breadcrumb = () => {
 
     return (
         <>
-            <div className={`h-48 bg-yellow-400`}></div>
+            <div className={`h-64 bg-yellow-400`} style={{backgroundImage:"url('/images/bg.png')"}}></div>
         </>
     );
 };
