@@ -11,7 +11,7 @@ const Home = () => {
 
     const router = useRouter();
     const nextPage = () => {
-        router.push('/register/registerStep2');
+        router.push('/register/complete-brief');
     };
     return (
         <div className={`p-6`}>

@@ -6,7 +6,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Inter', sans-serif;
   background: #E5E5E5;
 }
 
@@ -66,3 +67,14 @@ input:checked ~ .bg-toggle {
   border: 1px solid #ccc;
   box-shadow: 0 0 24px #00000052;
 };
+.accordion-item:last-of-type {
+  border-radius: 0;
+}
+.accordion-item:first-of-type {
+  border-radius: 0;
+}
+.timeline-label {
+  top: 50%;
+  left: 0;
+  transform: translate(-55%, -100%);
+}

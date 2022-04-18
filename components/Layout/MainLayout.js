@@ -10,8 +10,8 @@ const MainLayout = ({ children, title }) => {
             <Head title={`PVComBank - ${title}`} />
             <Header />
             <Breadcrumb />
-            <div className={`-mt-24`}>
-                <div className={`bg-white container p-9 mx-auto`}>
+            <div className={`-mt-24 pb-9`}>
+                <div className={`bg-white container p-9 mx-auto rounded-lg shadow-lg`}>
                     {children}
                 </div>
             </div>
