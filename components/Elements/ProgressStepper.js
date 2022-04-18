@@ -33,8 +33,8 @@ const ProgressStepper = (page) => {
                             </div>
                         </div>
                         {page.page > 2 ? (
-                            <div className="w-6 h-6 mx-auto bg-sky-500 border border-main-color rounded-full text-lg text-white flex items-center">
-                                <span className="text-center text-sm text-main-color w-full">
+                            <div className="w-6 h-6 mx-auto bg-sky-200 rounded-full text-lg border border-sky-300 flex items-center">
+                                <span className="text-center text-sm text-sky-400 w-full">
                                     <i className="fas fa-check"></i>
                                 </span>
                             </div>
@@ -64,16 +64,16 @@ const ProgressStepper = (page) => {
                             </div>
                         </div>
                         {page.page > 3 ? (
-                            <div className="w-6 h-6 mx-auto bg-white border border-main-color rounded-full text-lg text-white flex items-center">
+                            <div className="w-6 h-6 mx-auto bg-sky-200 rounded-full text-lg border border-sky-300 flex items-center">
                                 <span className="text-center text-sm text-main-color w-full">3</span>
                             </div>
                         ) : page.page == 3 ? (
                             <div className="w-6 h-6 mx-auto bg-sky-500 border border-sky-500 rounded-full text-lg text-white flex items-center">
-                                <span className="text-center text-sm text-main-color w-full">3</span>
+                                <span className="text-center text-sm w-full">3</span>
                             </div>
                         ) : (
                             <div className="w-6 h-6 mx-auto bg-white border border-main-color rounded-full text-lg text-white flex items-center">
-                                <span className="text-center text-sm text-main-color w-full">3</span>
+                                <span className="text-center text-sm text-sky-400 w-full">3</span>
                             </div>
                         )}
                     </div>
@@ -96,7 +96,7 @@ const ProgressStepper = (page) => {
                             </div>
                         ) : page.page == 4 ? (
                             <div className="w-6 h-6 mx-auto bg-sky-500 border border-sky-500 rounded-full text-lg text-white flex items-center">
-                                <span className="text-center text-sm text-main-color w-full">4</span>
+                                <span className="text-center text-sm w-full">4</span>
                             </div>
                         ) : (
                             <div className="w-6 h-6 mx-auto bg-white border border-main-color rounded-full text-lg text-white flex items-center">

@@ -58,7 +58,7 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-center justify-center">
-                    <button onClick={nextPage} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-12 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <button onClick={nextPage} className="bg-second-color hover:text-white text-black font-medium py-2 px-12 rounded focus:outline-none focus:shadow-outline" type="button">
                         Tiếp tục
                     </button>
                 </div>
