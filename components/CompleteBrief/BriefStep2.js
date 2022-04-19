@@ -5,7 +5,7 @@ import UploadFile from './UploadFile';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
-const BriefStep1 = ({ setTab }) => {
+const BriefStep2 = ({ setTab }) => {
     const data = { company_id: 'Lorem ipsum' };
     const field = [
         { title: `Lĩnh vực 1`, value: `linh_vuc_1` },
@@ -13,7 +13,7 @@ const BriefStep1 = ({ setTab }) => {
     ];
     const onChangeUS = (e) => {};
     const nextStep = () => {
-        setTab('step2');
+        setTab('step3');
     };
     const user = [{ avatar: '/images/leftcol-avatar.png' }];
     const avatarRef = useRef();
