@@ -65,7 +65,9 @@ const ProgressStepper = (page) => {
                         </div>
                         {page.page > 3 ? (
                             <div className="w-6 h-6 mx-auto bg-sky-200 rounded-full text-lg border border-sky-300 flex items-center">
-                                <span className="text-center text-sm text-main-color w-full">3</span>
+                                <span className="text-center text-sm text-sky-400 w-full">
+                                    <i className="fas fa-check"></i>
+                                </span>
                             </div>
                         ) : page.page == 3 ? (
                             <div className="w-6 h-6 mx-auto bg-sky-500 border border-sky-500 rounded-full text-lg text-white flex items-center">
