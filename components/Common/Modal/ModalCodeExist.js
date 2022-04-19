@@ -25,7 +25,7 @@ const ModalCodeExist = ({name,checked,className}) => {
             </ul>
           </div>
             <div>
-                <button className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-12 rounded focus:outline-none focus:shadow-outline" type="button">
+                <button className="bg-second-color hover:text-white text-black font-medium py-2 px-12 rounded focus:outline-none focus:shadow-outline" type="button">
                 Tạo tài khoản mới
                 </button>
             </div>
