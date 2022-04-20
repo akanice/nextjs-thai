@@ -2,11 +2,13 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Button, Modal, Box } from '@material-ui/core';
 import ModalGuideAuthenSignature from '@components/Common/Modal/ModalGuideAuthenSignature';
 
-const SignatureStep1 = () => {
+const SignatureStep1 = ({ setTab }) => {
     const [openModal, setOpenModal] = useState(false);
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
-
+    const nextStep = () => {
+        setTab('step2');
+    };
     return (
         <>
             <div className={`scrollpy h-96 w-full border border-dashed border-gray-200 bg-gray-50 rounded-lg p-4 overflow-y-auto text-sm mb-3`}>
@@ -24,7 +26,7 @@ const SignatureStep1 = () => {
                         <span className={``}>Nơi cấp: Sở Kế hoạch & Đầu Tư</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>1.4. Mã số thuế:  08081234567</span>
+                        <span className={`mr-3`}>1.4. Mã số thuế: 08081234567</span>
                         <span className={`mr-3`}>1.5. Loại hình doanh nghệp: Công ty cổ phần</span>
                         <span className={``}>1.6. Ngành nghề: SX & KD thương mại</span>
                     </div>
@@ -50,7 +52,7 @@ const SignatureStep1 = () => {
                         <span className={``}>Nơi cấp: Sở Kế hoạch & Đầu Tư</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>3.4. Mã số thuế:  08081234567</span>
+                        <span className={`mr-3`}>3.4. Mã số thuế: 08081234567</span>
                         <span className={`mr-3`}>3.5. Loại hình doanh nghệp: Công ty cổ phần</span>
                         <span className={``}>3.6. Ngành nghề: SX & KD thương mại</span>
                     </div>
@@ -70,10 +72,12 @@ const SignatureStep1 = () => {
                     Tôi xác nhận đã đọc kỹ và cam kết tuân thủ theo đúng các điều kiện đã cam kết với PVcomBank.
                 </label>
             </div>
-            <button className="mt-3 bg-second-color hover:text-white text-black font-medium py-2 px-12 rounded focus:outline-none focus:shadow-outline" type="button">
+            <button onClick={nextStep} className="mt-3 bg-second-color hover:text-white text-black font-medium py-2 px-12 rounded focus:outline-none focus:shadow-outline" type="button">
                 Tải về và xác thực chữ kí số
             </button>
-            <div className={`mt-3 text-link underline cursor-pointer`} onClick={openModalGuide}>Hướng dẫn xác thực chữ kí số</div>
+            <div className={`mt-3 text-link underline cursor-pointer`} onClick={openModalGuide}>
+                Hướng dẫn xác thực chữ kí số
+            </div>
             {/* Modal Mẫu tham khảo (edit this) */}
             <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box className={`px-16 py-9 custom-modal`}>
