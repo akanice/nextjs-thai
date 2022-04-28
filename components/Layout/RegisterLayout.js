@@ -1,8 +1,8 @@
-import Header from '/components/Header';
+import HeaderPostCheck from '/components/Header/HeaderPostCheck';
 import Head from '../Common/Head';
 // import Footer from '/components/Footer';
 import React from 'react';
-import LeftColumn from '@components/Common/LeftColumn';
+import LeftColumnPC from '@components/Common/LeftColumnPC';
 // creates a beautiful scrollbar
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
@@ -26,11 +26,11 @@ const RegisterLayout = ({ children, title }) => {
         <>
             <div className={`bg-white`}>
                 <Head title={`Bank - ${title}`} />
-                <Header className={`mb-12`} />
+                <HeaderPostCheck className={`mb-12`} />
                 <div className={`wrapper top-0 relative h-screen min-h-screen`}>
-                    <LeftColumn />
-                    <div className={`h-screen relative float-right flex justify-center`} style={{ width: 'calc(100% - 300px)', 'overflow-y': 'scroll' }} ref={mainPanel}>
-                        <div className={`container`}>{children}</div>
+                    <LeftColumnPC />
+                    <div className={`h-screen relative float-right`} style={{ width: 'calc(100% - 250px)', 'overflow-y': 'scroll' }} ref={mainPanel}>
+                        <div className={`p-3`}>{children}</div>
                     </div>
                 </div>
             </div>

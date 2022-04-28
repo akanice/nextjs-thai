@@ -35,6 +35,16 @@ input:checked ~ .dot {
 input:checked ~ .bg-toggle {
   background: rgba(106, 135, 232, 1);
 }
+input.style-2:checked ~ .dot {
+  transform: translateX(70%);
+  color: #000;
+}
+.style-2 .bg-toggle {
+  background: #f1f1f1;
+}
+input.style-2:checked ~ .bg-toggle {
+  background: rgb(180 222 255);
+}
 .stepper {
   overflow: visible;
 }
@@ -76,4 +86,17 @@ input:checked ~ .bg-toggle {
   top: 50%;
   left: 0;
   transform: translate(-55%, -100%);
+}
+.table-ekyc th,.table-ekyc td {
+  padding: 5px 8px;
+}
+.table-ekyc th {
+  background: #ddd;
+  font-weight: 400;
+}
+.table-ekyc td {
+  background: rgb(243, 244, 246);
+}
+.table-ekyc tbody tr {
+  border-bottom:1px solid #fff;
 }

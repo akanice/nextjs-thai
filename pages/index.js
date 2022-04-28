@@ -1,6 +1,5 @@
 import React from 'react';
 import MainLayout from '@components/Layout/MainLayout';
-import Register from '/components/Register/';
 import Home from '@components/Home';
 
 const _Home = ({ setting }) => {

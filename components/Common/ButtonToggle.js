@@ -16,7 +16,7 @@ const ButtonToggle = ({ name, checked, className }) => {
                         // onChange={(e) => setValue(e.target.checked)}
                     />
                     <div className={`w-12 h-8 bg-toggle rounded-full shadow-inner`}></div>
-                    <div className={`flex items-center justify-center dot absolute w-8 h-8 bg-white border border-gray-100 rounded-full shadow -left-1 top-0 transition`}>{/* <FaCheck size={10} className={`inline-block`} /> */}</div>
+                    <div className={`flex items-center justify-center dot absolute w-8 h-8 bg-blue-600 border border-gray-100 rounded-full shadow -left-1 top-0 transition`}>{/* <FaCheck size={10} className={`inline-block`} /> */}</div>
                 </div>
             </label>
         </div>
