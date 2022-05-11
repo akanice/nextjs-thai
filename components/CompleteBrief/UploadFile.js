@@ -38,6 +38,9 @@ const UploadFile = forwardRef((props, ref) => {
             setLoading(true);
             const formData = new FormData();
             formData.append('file', file);
+            if (localStorage.getItem('company_id') != null) {
+                formData.append('company_id', localStorage.getItem('company_id'));
+            }
             console.log('select file ' + filename);
             var url = 'http://localhost:8583/business/api/v1/ocr';
             type == 'gpdkkd' ? (url = url + '/upload/businessRegistration') : type == 'visa' ? (url = url + '/upload/visa') : type == 'giay_dkmst' ? (url = url + '/upload/taxRegistration') : type == 'GTTT' ? (url = url + '/upload/personalId') : type == 'GTTT_ktt' ? (url = url + '/upload/personalId') : (url = url + '/upload/appoimentDecision');

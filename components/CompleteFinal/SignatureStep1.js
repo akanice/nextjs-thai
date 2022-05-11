@@ -15,25 +15,25 @@ const SignatureStep1 = () => {
                 <p className={`uppercase mb-1`}>1.THÔNG TIN TỔ CHỨC MỞ TÀI KHOẢN</p>
                 <div className={`ml-2`}>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>1.1, Tên tiếng việt của Tổ chức: Công ty Cổ phần ABCD</span>
+                        <span className={`mr-3`}>1.1, Tên tiếng việt của Tổ chức: {localStorage.getItem('company_name')}</span>
                         <span className={``}>1.2.Tên viết tắt: ABCD</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>1.3. Giấy tờ chứng minh tổ chức thành lập hợp pháp: 123456789</span>
-                        <span className={`mr-3`}>Ngày cấp: 06/6/2021</span>
+                        <span className={`mr-3`}>1.3. Giấy tờ chứng minh tổ chức thành lập hợp pháp: {localStorage.getItem('company_id')}</span>
+                        <span className={`mr-3`}>Ngày cấp:{localStorage.getItem('company_issue_first_date')}</span>
                         <span className={``}>Nơi cấp: Sở Kế hoạch & Đầu Tư</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>1.4. Mã số thuế:  08081234567</span>
+                        <span className={`mr-3`}>1.4. Mã số thuế: {localStorage.getItem('company_id')}</span>
                         <span className={`mr-3`}>1.5. Loại hình doanh nghệp: Công ty cổ phần</span>
                         <span className={``}>1.6. Ngành nghề: SX & KD thương mại</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>1.7. Địa chỉ trụ sở chính: 22 Ngô Quyền, Hoàn Kiếm, Hà Nội</span>
+                        <span className={`mr-3`}>1.7. Địa chỉ trụ sở chính: {localStorage.getItem('data?.company_location')}</span>
                         <span className={`mr-3`}>1.8. Số điện thoại: (024) 7726789</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>1.9. Địa chỉ liên hệ: 22 Ngô Quyền, Hoàn Kiếm, Hà Nội</span>
+                        <span className={`mr-3`}>1.9. Địa chỉ liên hệ: {localStorage.getItem('data?.company_location')}</span>
                         <span className={`mr-3`}>1.10. Tên Tài khoản đăng ký với Ngân hàng: Công ty CP ABCD</span>
                     </div>
                 </div>
@@ -41,26 +41,26 @@ const SignatureStep1 = () => {
                 <p className={`uppercase mb-1`}>3. THÔNG TIN VỀ NGƯỜI ĐẠI DIỆN HỢP PHÁP CỦA TỔ CHỨC</p>
                 <div className={`ml-2`}>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>3.1, Tên tiếng việt của Tổ chức: Công ty Cổ phần ABCD</span>
+                        <span className={`mr-3`}>3.1, Tên tiếng việt của Tổ chức: {localStorage.getItem('company_name')}</span>
                         <span className={``}>3.2.Tên viết tắt: ABCD</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>3.3. Giấy tờ chứng minh tổ chức thành lập hợp pháp: 123456789</span>
+                        <span className={`mr-3`}>3.3. Giấy tờ chứng minh tổ chức thành lập hợp pháp: {localStorage.getItem('company_id')}</span>
                         <span className={`mr-3`}>Ngày cấp: 06/6/2021</span>
                         <span className={``}>Nơi cấp: Sở Kế hoạch & Đầu Tư</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>3.4. Mã số thuế:  08081234567</span>
+                        <span className={`mr-3`}>3.4. Mã số thuế: {localStorage.getItem('company_id')}</span>
                         <span className={`mr-3`}>3.5. Loại hình doanh nghệp: Công ty cổ phần</span>
                         <span className={``}>3.6. Ngành nghề: SX & KD thương mại</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>3.7. Địa chỉ trụ sở chính: 22 Ngô Quyền, Hoàn Kiếm, Hà Nội</span>
+                        <span className={`mr-3`}>3.7. Địa chỉ trụ sở chính: {localStorage.getItem('data?.company_location')}</span>
                         <span className={`mr-3`}>3.8. Số điện thoại: (024) 7726789</span>
                     </div>
                     <div className={`mb-2`}>
-                        <span className={`mr-3`}>3.9. Địa chỉ liên hệ: 22 Ngô Quyền, Hoàn Kiếm, Hà Nội</span>
-                        <span className={`mr-3`}>3.10. Tên Tài khoản đăng ký với Ngân hàng: Công ty CP ABCD</span>
+                        <span className={`mr-3`}>3.9. Địa chỉ liên hệ: {localStorage.getItem('data?.company_location')}</span>
+                        <span className={`mr-3`}>3.10. Tên Tài khoản đăng ký với Ngân hàng: {localStorage.getItem('company_name')}</span>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,9 @@ const SignatureStep1 = () => {
             <button className="mt-3 bg-second-color hover:text-white text-black font-medium py-2 px-12 rounded focus:outline-none focus:shadow-outline" type="button">
                 Tải về và xác thực chữ kí số
             </button>
-            <div className={`mt-3 text-link underline cursor-pointer`} onClick={openModalGuide}>Hướng dẫn xác thực chữ kí số</div>
+            <div className={`mt-3 text-link underline cursor-pointer`} onClick={openModalGuide}>
+                Hướng dẫn xác thực chữ kí số
+            </div>
             {/* Modal Mẫu tham khảo (edit this) */}
             <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box className={`px-16 py-9 custom-modal`}>

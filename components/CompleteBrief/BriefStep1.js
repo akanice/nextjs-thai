@@ -32,9 +32,33 @@ const BriefStep1 = ({ setTab }) => {
     };
     const user = [{ avatar: '/images/leftcol-avatar.png' }];
     const avatarRef = useRef();
-
+    const [openModal, setOpenModal] = useState(false);
+    const openModalGuide = () => setOpenModal(true);
+    const closeModalGuide = () => setOpenModal(false);
+    useEffect(() => {
+        if (data?.result_code == 1) {
+            openModalGuide();
+        }
+        if (data?.company_id != null) {
+            localStorage.setItem('company_id', data?.company_id);
+            localStorage.setItem('company_name', data?.company_name);
+            localStorage.setItem('company_issue_first_date', data?.company_issue_first_date);
+            localStorage.setItem('company_issue_place', data?.company_issue_place);
+            localStorage.setItem('company_name_eng', data?.company_name_eng);
+            localStorage.setItem('boss_name', data?.boss_name);
+            localStorage.setItem('boss_permanent_address', data?.boss_permanent_address);
+            localStorage.setItem('boss_id_number', data?.boss_id_number);
+            localStorage.setItem('company_location', data?.company_location);
+            localStorage.setItem('boss_id_number', data?.boss_id_number);
+        }
+    }, [data]);
     return (
         <>
+            <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                <Box className={`px-16 py-9 custom-modal`}>
+                    <div>{data?.msg}</div>
+                </Box>
+            </Modal>
             <Modal open={loading} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style} className={`px-36 py-9`}>
                     <ReactLoading type="cylon" color="#0000FF" height={100} width={50} />
