@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Button, Modal, Box } from '@material-ui/core';
 import ProgressStepper from '@components/Elements/ProgressStepper';
 import BriefStep1 from './BriefStep1';
 import BriefStep2 from './BriefStep2';
@@ -80,7 +81,7 @@ const CompleteBrief = (page) => {
                             <p className={tab == 'step3' ? 'text-black' : 'text-gray-300'}>Giấy tờ bổ nhiệm người phụ trách còn hiệu lực</p>
                         </button>
                         <div className="w-6 h-6 mx-auto bg-sky-500 rounded-full text-lg border border-sky-300 flex items-center absolute timeline-label">
-                            <span className="text-center text-white text-sm w-full">3</span>
+                            <span className="text-center text-white text-sm w-full">4</span>
                         </div>
                     </h2>
                     <div id="collapse3" className={`accordion-collapse collapse px-5 pb-9 ` + (tab == `step4` ? 'show' : '')} aria-labelledby="heading3" data-bs-parent="#accordionExample">
@@ -95,7 +96,7 @@ const CompleteBrief = (page) => {
                             <p className={tab == 'step3' ? 'text-black' : 'text-gray-300'}>Chỉ áp dụng với doanh nghiệp thành lập trước ngày 01/07/2015</p>
                         </button>
                         <div className="w-6 h-6 mx-auto bg-sky-500 rounded-full text-lg border border-sky-300 flex items-center absolute timeline-label">
-                            <span className="text-center text-white text-sm w-full">3</span>
+                            <span className="text-center text-white text-sm w-full">5</span>
                         </div>
                     </h2>
                     <div id="collapse3" className={`accordion-collapse collapse px-5 pb-9 ` + (tab == `step5` ? 'show' : '')} aria-labelledby="heading3" data-bs-parent="#accordionExample">

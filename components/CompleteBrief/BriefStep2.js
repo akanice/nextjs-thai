@@ -31,8 +31,29 @@ const BriefStep2 = ({ setTab }) => {
     };
     const user = [{ avatar: '/images/leftcol-avatar.png' }];
     const avatarRef = useRef();
+    const [openModal, setOpenModal] = useState(false);
+    const openModalGuide = () => setOpenModal(true);
+    const closeModalGuide = () => setOpenModal(false);
+    useEffect(() => {
+        if (data?.name != null) {
+            localStorage.setItem('boss_name', data?.name);
+            localStorage.setItem('boss_birthday', data?.birthday);
+            localStorage.setItem('boss_id', data?.id);
+            localStorage.setItem('boss_issue_place', data?.issue_place);
+            localStorage.setItem('boss_national', data?.national);
+            localStorage.setItem('boss_address', data?.address);
+        }
+        if (data?.msg != null) {
+            openModalGuide();
+        }
+    }, [data]);
     return (
         <>
+            <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                <Box className={`px-16 py-9 custom-modal`}>
+                    <div>{data?.msg}</div>
+                </Box>
+            </Modal>
             <Modal open={loading} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style} className={`px-36 py-9`}>
                     <ReactLoading type="cylon" color="#0000FF" height={100} width={50} />
