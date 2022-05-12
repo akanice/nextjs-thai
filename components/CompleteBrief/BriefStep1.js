@@ -30,26 +30,28 @@ const BriefStep1 = ({ setTab }) => {
     const nextStep = () => {
         setTab('step2');
     };
+
     const user = [{ avatar: '/images/leftcol-avatar.png' }];
     const avatarRef = useRef();
     const [openModal, setOpenModal] = useState(false);
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
     useEffect(() => {
-        if (data?.result_code == 1) {
-            openModalGuide();
-        }
-        if (data?.company_id != null) {
-            localStorage.setItem('company_id', data?.company_id);
+        if (data?.company_id != null && typeof window != 'undefined') {
             localStorage.setItem('company_name', data?.company_name);
+            localStorage.setItem('company_name_short', data?.company_name_short);
+            localStorage.setItem('company_id', data?.company_id);
+            localStorage.setItem('company_tax_code', data?.company_tax_code);
+            localStorage.setItem('company_name_short', data?.company_name_short);
             localStorage.setItem('company_issue_first_date', data?.company_issue_first_date);
             localStorage.setItem('company_issue_place', data?.company_issue_place);
-            localStorage.setItem('company_name_eng', data?.company_name_eng);
-            localStorage.setItem('boss_name', data?.boss_name);
-            localStorage.setItem('boss_permanent_address', data?.boss_permanent_address);
-            localStorage.setItem('boss_id_number', data?.boss_id_number);
+
             localStorage.setItem('company_location', data?.company_location);
-            localStorage.setItem('boss_id_number', data?.boss_id_number);
+            localStorage.setItem('company_tel', data?.company_tel);
+            localStorage.setItem('company_name_eng', data?.company_name_eng);
+        }
+        if (data?.msg != null) {
+            openModalGuide();
         }
     }, [data]);
     return (
@@ -94,7 +96,7 @@ const BriefStep1 = ({ setTab }) => {
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 1 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Tên doanh nghiệp`} placeholder={`Công ty cổ phần ABC`} value={data?.company_name} />
+                            <FormInput2 name={`name_6`} label={`Tên doanh nghiệp`} placeholder={`Công ty cổ phần ABC`} value={data?.company_name} disabled={true} />
                         </div>
                         <div className={''}>
                             <FormInput2 name={`name_7`} label={`Tên viết tắt`} placeholder={`ABC`} value={data?.company_name_short} />

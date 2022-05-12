@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Button, Modal, Box } from '@material-ui/core';
 import ProgressStepper from '@components/Elements/ProgressStepper';
 import BriefStep1 from './BriefStep1';
 import BriefStep2 from './BriefStep2';
@@ -77,7 +78,7 @@ const CompleteBrief = (page) => {
                     <h2 className="accordion-header mb-0 relative" id="heading4">
                         <button className="relative flex flex-col  w-full px-5 mb-3 text-base transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded={tab == 'step3' ? 'true' : 'false'} aria-controls="collapse3">
                             <span className={`font-bold text-md ` + (tab == 'step4' ? 'text-black' : 'text-gray-400')}>Giấy tờ bổ nhiệm kễ toán trưởng/người phụ trách kế toán</span>
-                            <p className={tab == 'step4' ? 'text-black' : 'text-gray-300'}>Giấy tờ bổ nhiệm người phụ trách còn hiệu lực</p>
+                            <p className={tab == 'step3' ? 'text-black' : 'text-gray-300'}>Giấy tờ bổ nhiệm người phụ trách còn hiệu lực</p>
                         </button>
                         <div className="w-6 h-6 mx-auto bg-sky-500 rounded-full text-lg border border-sky-300 flex items-center absolute timeline-label">
                             <span className="text-center text-white text-sm w-full">4</span>
@@ -92,7 +93,7 @@ const CompleteBrief = (page) => {
                     <h2 className="accordion-header mb-0 relative" id="heading5">
                         <button className="relative flex flex-col  w-full px-5 mb-3 text-base transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded={tab == 'step3' ? 'true' : 'false'} aria-controls="collapse3">
                             <span className={`font-bold text-md ` + (tab == 'step5' ? 'text-black' : 'text-gray-400')}>Giấy đăng kí mã số thuế (tuỳ chọn)</span>
-                            <p className={tab == 'step5' ? 'text-black' : 'text-gray-300'}>Chỉ áp dụng với doanh nghiệp thành lập trước ngày 01/07/2015</p>
+                            <p className={tab == 'step3' ? 'text-black' : 'text-gray-300'}>Chỉ áp dụng với doanh nghiệp thành lập trước ngày 01/07/2015</p>
                         </button>
                         <div className="w-6 h-6 mx-auto bg-sky-500 rounded-full text-lg border border-sky-300 flex items-center absolute timeline-label">
                             <span className="text-center text-white text-sm w-full">5</span>

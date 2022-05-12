@@ -35,16 +35,18 @@ const BriefStep3 = ({ setTab }) => {
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
     useEffect(() => {
-        if (data?.result_code == 1) {
-            openModalGuide();
-        }
         if (data?.name != null) {
             localStorage.setItem('name', data?.name);
             localStorage.setItem('birthday', data?.birthday);
             localStorage.setItem('id', data?.id);
             localStorage.setItem('issue_place', data?.issue_place);
+            localStorage.setItem('national', data?.national);
             localStorage.setItem('address', data?.address);
         }
+        if (data?.msg != null) {
+            openModalGuide();
+        }
+        console.log(data);
     }, [data]);
     return (
         <>
@@ -83,7 +85,7 @@ const BriefStep3 = ({ setTab }) => {
             </div>
 
             <div className={`border-b border-gray-200 my-6`}></div>
-            {data?.name ? (
+            {data?.name != null ? (
                 <div>
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 1 */}

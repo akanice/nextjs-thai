@@ -37,14 +37,14 @@ const BriefStep5 = ({ setTab }) => {
     };
     const user = [{ avatar: '/images/leftcol-avatar.png' }];
     const avatarRef = useRef();
-    const [openModal, setOpenModal] = useState(false);
-    const openModalGuide = () => setOpenModal(true);
-    const closeModalGuide = () => setOpenModal(false);
     useEffect(() => {
-        if (data?.result_code == 1) {
+        if (data?.msg != null) {
             openModalGuide();
         }
     }, [data]);
+    const [openModal, setOpenModal] = useState(false);
+    const openModalGuide = () => setOpenModal(true);
+    const closeModalGuide = () => setOpenModal(false);
     return (
         <>
             <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
@@ -112,13 +112,13 @@ const BriefStep5 = ({ setTab }) => {
                             <FormInput2 name={`name_7`} label={`Cơ quan quản lý trực tiếp`} placeholder={`ABC`} value={data?.issue_place} />
                         </div>
                     </div>
-                    <button onClick={nextPage} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-9 mt-3 rounded focus:outline-none focus:shadow-outline" type="button">
-                        Tiếp tục
-                    </button>
                 </div>
             ) : (
                 <></>
             )}
+            <button onClick={nextPage} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-9 mt-3 rounded focus:outline-none focus:shadow-outline" type="button">
+                Tiếp tục
+            </button>
         </>
     );
 };

@@ -35,15 +35,16 @@ const BriefStep2 = ({ setTab }) => {
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
     useEffect(() => {
-        if (data?.result_code == 1) {
-            openModalGuide();
-        }
         if (data?.name != null) {
             localStorage.setItem('boss_name', data?.name);
             localStorage.setItem('boss_birthday', data?.birthday);
             localStorage.setItem('boss_id', data?.id);
             localStorage.setItem('boss_issue_place', data?.issue_place);
+            localStorage.setItem('boss_national', data?.national);
             localStorage.setItem('boss_address', data?.address);
+        }
+        if (data?.msg != null) {
+            openModalGuide();
         }
     }, [data]);
     return (

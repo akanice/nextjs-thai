@@ -31,14 +31,14 @@ const BriefStep4 = ({ setTab }) => {
     };
     const user = [{ avatar: '/images/leftcol-avatar.png' }];
     const avatarRef = useRef();
-    const [openModal, setOpenModal] = useState(false);
-    const openModalGuide = () => setOpenModal(true);
-    const closeModalGuide = () => setOpenModal(false);
     useEffect(() => {
-        if (data?.result_code == 1) {
+        if (data?.msg != null) {
             openModalGuide();
         }
     }, [data]);
+    const [openModal, setOpenModal] = useState(false);
+    const openModalGuide = () => setOpenModal(true);
+    const closeModalGuide = () => setOpenModal(false);
     return (
         <>
             <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
