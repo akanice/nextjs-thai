@@ -37,7 +37,7 @@ const BriefStep1 = ({ setTab }) => {
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
     useEffect(() => {
-        if (data?.company_id != null && typeof window != 'undefined') {
+        if (data?.company_id != null) {
             localStorage.setItem('company_name', data?.company_name);
             localStorage.setItem('company_name_short', data?.company_name_short);
             localStorage.setItem('company_id', data?.company_id);
@@ -45,7 +45,6 @@ const BriefStep1 = ({ setTab }) => {
             localStorage.setItem('company_name_short', data?.company_name_short);
             localStorage.setItem('company_issue_first_date', data?.company_issue_first_date);
             localStorage.setItem('company_issue_place', data?.company_issue_place);
-
             localStorage.setItem('company_location', data?.company_location);
             localStorage.setItem('company_tel', data?.company_tel);
             localStorage.setItem('company_name_eng', data?.company_name_eng);
