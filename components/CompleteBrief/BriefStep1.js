@@ -25,8 +25,19 @@ const BriefStep1 = ({ setTab }) => {
         { title: `Lĩnh vực 1`, value: `linh_vuc_1` },
         { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
     ];
-
-    const onChangeUS = (e) => {};
+    const [owner, setOwner] = useState(false);
+    const currency_field = [
+        { title: `US`, value: `US` },
+        { title: `VND`, value: `VND` },
+        { title: `EUR`, value: `EUR` }
+    ];
+    const category_field = [
+        { title: `Lĩnh vực 1`, value: `linh_vuc_1` },
+        { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
+    ];
+    const onChangeUS = (e) => {
+        setOwner(!owner);
+    };
     const nextStep = () => {
         setTab('step2');
     };
@@ -36,6 +47,10 @@ const BriefStep1 = ({ setTab }) => {
     const [openModal, setOpenModal] = useState(false);
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
+    const [volumCompany, setVolumCompany] = useState('');
+    const [categoryCompany, setCategoryCompany] = useState('');
+    const [currency, setCurrency] = useState('');
+    const [vietnameName, setVietnamName] = useState('');
     useEffect(() => {
         if (data?.company_id != null) {
             localStorage.setItem('company_name', data?.company_name);
@@ -53,6 +68,11 @@ const BriefStep1 = ({ setTab }) => {
             openModalGuide();
         }
     }, [data]);
+    useEffect(() => {
+        localStorage.setItem('volum_company', volumCompany);
+        localStorage.setItem('currency_company', currency);
+        localStorage.setItem('category_company', categoryCompany);
+    }, [volumCompany, categoryCompany, currency]);
     return (
         <>
             <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
@@ -88,7 +108,7 @@ const BriefStep1 = ({ setTab }) => {
                     <></>
                 )}
             </div>
-            {data?.company_id != null ? (
+            {data?.company_id == null ? (
                 <div>
                     {' '}
                     <div className={`border-b border-gray-200 my-6`}></div>
@@ -131,10 +151,10 @@ const BriefStep1 = ({ setTab }) => {
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 5 */}
                         <div className={''}>
-                            <FormSelect2 label={`Lĩnh vực hoạt động kinh doanh`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
+                            <FormSelect2 label={`Lĩnh vực hoạt động kinh doanh`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} setValue={setCategoryCompany} />
                         </div>
                         <div className={''}>
-                            <FormSelect2 label={`Doanh thu năm gần nhất`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
+                            <FormSelect2 label={`Doanh thu năm gần nhất`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} setValue={setVolumCompany} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
@@ -149,10 +169,10 @@ const BriefStep1 = ({ setTab }) => {
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 5 */}
                         <div className={''}>
-                            <FormSelect2 label={`Đăng ký loại tài khoản cần mở`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
+                            <FormSelect2 label={`Đăng ký loại tài khoản cần mở`} options={category_field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
                         </div>
                         <div className={''}>
-                            <FormSelect2 label={`Chọn loại tiền tệ`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
+                            <FormSelect2 label={`Chọn loại tiền tệ`} options={currency_field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
                         </div>
                     </div>
                     <div className={`flex items-center mb-3`}>
@@ -168,24 +188,30 @@ const BriefStep1 = ({ setTab }) => {
                         </label>
                     </div>
                     <div className={`border-b border-gray-200 my-6`}></div>
-                    <div className={`grid grid-cols-2 gap-8`}>
-                        {/* Row 4 */}
-                        <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`0123456789`} value={data?.boss_name} />
+                    {owner ? (
+                        <div>
+                            <div className={`grid grid-cols-2 gap-8`}>
+                                {/* Row 4 */}
+                                <div className={''}>
+                                    <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`0123456789`} value={data?.boss_name} />
+                                </div>
+                                <div className={''}>
+                                    <FormInput2 name={`name_7`} label={`Số CMND/CCCD`} placeholder={`ABC`} value={data?.boss_id_number} />
+                                </div>
+                            </div>
+                            <div className={`grid grid-cols-2 gap-8`}>
+                                {/* Row 4 */}
+                                <div className={''}>
+                                    <FormInput2 name={`name_6`} label={`Số điện thoại di động`} placeholder={`0123456789`} value={data?.company_id} />
+                                </div>
+                                <div className={''}>
+                                    <FormInput2 name={`name_7`} label={`Địa chỉ liên lạc`} placeholder={`ABC`} value={data?.boss_permanent_address} />
+                                </div>
+                            </div>
                         </div>
-                        <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Số CMND/CCCD`} placeholder={`ABC`} value={data?.boss_id_number} />
-                        </div>
-                    </div>
-                    <div className={`grid grid-cols-2 gap-8`}>
-                        {/* Row 4 */}
-                        <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Số điện thoại di động`} placeholder={`0123456789`} value={data?.company_id} />
-                        </div>
-                        <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Địa chỉ liên lạc`} placeholder={`ABC`} value={data?.boss_permanent_address} />
-                        </div>
-                    </div>
+                    ) : (
+                        <></>
+                    )}
                     <button onClick={nextStep} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-9 mt-3 rounded focus:outline-none focus:shadow-outline" type="button">
                         Tiếp tục
                     </button>
