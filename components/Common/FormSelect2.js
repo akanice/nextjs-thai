@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const FormSelect2 = ({ options, name, label, defaultValue, className, setValue }) => {
     function handleChange(event) {
-        setValue(event.targeet.value);
+        setValue(event.target.value);
     }
 
     return (

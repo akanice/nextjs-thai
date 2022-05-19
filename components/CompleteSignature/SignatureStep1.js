@@ -23,6 +23,7 @@ const SignatureStep1 = ({ setTab }) => {
     };
     const onSubmit = async (e) => {
         try {
+            console.log('treser tset');
             setLoading(true);
             var formData = {};
             formData['_1tenDoanhNghiep'] = localStorage.getItem('company_name');
@@ -41,24 +42,16 @@ const SignatureStep1 = ({ setTab }) => {
             formData['_1noiCap'] = '';
             formData['_2TTCSHHL'] = '';
 
-            formData['_2hoTen'] = localStorage.getItem('boss_name');
-            formData['_2diaChi'] = localStorage.getItem('boss_address');
-            formData['_2soCMND'] = localStorage.getItem('boss_id');
-            formData['_2sdtDiDong'] = '';
-            formData['_2quocTich'] = '';
-            formData['_2LNNNAHCT'] = '';
-
             formData['_3hoTen'] = localStorage.getItem('boss_name');
             formData['_3ngaySinh'] = localStorage.getItem('boss_birthday');
             formData['_3chucVu'] = '';
             formData['_3soCMND'] = localStorage.getItem('boss_id');
-            formData['_3ngayCap'] = '';
+            formData['_3ngayCap'] = localStorage.getItem('boss_issue_date');
             formData['_3noiCap'] = localStorage.getItem('boss_issue_place');
 
             formData['_3sdti'] = '';
             formData['_3diaChiThuongTru'] = localStorage.getItem('boss_address');
             formData['_3email'] = '';
-            formData['_3diaChiLienLac'] = localStorage.getItem('boss_address');
 
             formData['_4hoTen'] = localStorage.getItem('name');
             formData['_4ngaySinh'] = localStorage.getItem('birthday');
@@ -67,10 +60,29 @@ const SignatureStep1 = ({ setTab }) => {
             formData['_4ngayCap'] = localStorage.getItem('issue_date');
             formData['_4noiCap'] = localStorage.getItem('issue_place');
 
-            formData['_4sdti'] = '';
             formData['_4diaChiThuongTru'] = localStorage.getItem('address');
-            formData['_4email'] = '';
-            formData['_4diaChiLienLac'] = localStorage.getItem('address');
+
+            formData['_1doanhThuNamGanNhat'] = localStorage.getItem('volum_company');
+            formData['_6chonLoaiTienTe'] = localStorage.getItem('currency_company');
+            formData['_1linhVucKD'] = localStorage.getItem('category_company');
+            formData['_1loaiHinhDN'] = localStorage.getItem('type_company');
+
+            formData['_2hoTen'] = localStorage.getItem('benefit_name');
+            formData['_2sdtDiDong'] = localStorage.getItem('benefit_phone');
+            formData['_2soCMND'] = localStorage.getItem('benefit_id');
+            formData['_2diaChi'] = localStorage.getItem('benefit_adress');
+            if (localStorage.getItem('benefit_name') != '') {
+                formData['_2TTCSHHL'] = 'Có';
+            } else {
+                formData['_2TTCSHHL'] = 'Không';
+            }
+            formData['_3email'] = localStorage.getItem('boss_email');
+            formData['_3diaChiLienLac'] = localStorage.getItem('boss_current_adress');
+            formData['_3sdti'] = localStorage.getItem('boss_phone');
+
+            formData['_4email'] = localStorage.getItem('email');
+            formData['_4diaChiLienHe'] = localStorage.getItem('current_adress');
+            formData['_4soDTi'] = localStorage.getItem('phone');
             var url = 'http://localhost:8583/business/api/v1/export/generate';
             const res = await axios
                 .post(url, formData, {

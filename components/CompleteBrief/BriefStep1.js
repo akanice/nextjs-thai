@@ -22,8 +22,16 @@ const BriefStep1 = ({ setTab }) => {
     };
     const [loading, setLoading] = useState(false);
     const field = [
-        { title: `Lĩnh vực 1`, value: `linh_vuc_1` },
-        { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
+        { title: `1. Nông nghiệp và hoạt động dịch vụ có liên quan`, value: `1. Nông nghiệp và hoạt động dịch vụ có liên quan` },
+        { title: `2. Lâm nghiệp và hoạt động dịch vụ có liên quan`, value: `2. Lâm nghiệp và hoạt động dịch vụ có liên quan` },
+        { title: `3. Khai thác, nuôi trồng thuỷ sản`, value: `3. Khai thác, nuôi trồng thuỷ sản` },
+        { title: ` 5. Khai thác than cứng và than non`, value: ` 5. Khai thác than cứng và than non` }
+    ];
+    const volum_field = [
+        { title: `0 - 20 tỷ VND`, value: `0 - 20 tỷ VND` },
+        { title: `Trên 20 tỷ VND - 500 tỷ VND`, value: `Trên 20 tỷ VND - 500 tỷ VND` },
+        { title: `Trên 500 tỷ VND -1000 tỷ VND`, value: `Trên 500 tỷ VND -1000 tỷ VND` },
+        { title: ` > 1000 tỷ VND`, value: ` > 1000 tỷ VND` }
     ];
     const [owner, setOwner] = useState(false);
     const currency_field = [
@@ -32,8 +40,9 @@ const BriefStep1 = ({ setTab }) => {
         { title: `EUR`, value: `EUR` }
     ];
     const category_field = [
-        { title: `Lĩnh vực 1`, value: `linh_vuc_1` },
-        { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
+        { title: `Doanh Nghiệp Tư Nhân`, value: `Doanh Nghiệp Tư Nhân` },
+        { title: `Công ty Trách Nhiệm Hữu Hạn`, value: `Công ty Trách Nhiệm Hữu Hạn` },
+        { title: `Công ty Cổ Phần`, value: `Công ty Cổ Phần` }
     ];
     const onChangeUS = (e) => {
         setOwner(!owner);
@@ -50,7 +59,15 @@ const BriefStep1 = ({ setTab }) => {
     const [volumCompany, setVolumCompany] = useState('');
     const [categoryCompany, setCategoryCompany] = useState('');
     const [currency, setCurrency] = useState('');
+    const [typeAccount, setTypeAccount] = useState('');
     const [vietnameName, setVietnamName] = useState('');
+    const [englishName, setEnglishName] = useState('');
+    const [isContinue, setContinue] = useState(false);
+    const [benefitPersonName, setBenefitPersonName] = useState('');
+    const [benefitPersonAdress, setBenefitPersonAdres] = useState('');
+    const [benefitPersonId, setBenefitPersonId] = useState('');
+    const [benefitPersonPhone, setBenefitPersonPhone] = useState('');
+
     useEffect(() => {
         if (data?.company_id != null) {
             localStorage.setItem('company_name', data?.company_name);
@@ -72,7 +89,16 @@ const BriefStep1 = ({ setTab }) => {
         localStorage.setItem('volum_company', volumCompany);
         localStorage.setItem('currency_company', currency);
         localStorage.setItem('category_company', categoryCompany);
-    }, [volumCompany, categoryCompany, currency]);
+        localStorage.setItem('type_company', typeAccount);
+
+        localStorage.setItem('benefit_name', benefitPersonName);
+        localStorage.setItem('benefit_phone', benefitPersonPhone);
+        localStorage.setItem('benefit_id', benefitPersonId);
+        localStorage.setItem('benefit_adress', benefitPersonAdress);
+        if (typeAccount != '' && categoryCompany != '' && currency != '' && volumCompany != '') {
+            setContinue(true);
+        }
+    }, [volumCompany, categoryCompany, currency, typeAccount, benefitPersonAdress, benefitPersonId, benefitPersonName, benefitPersonPhone]);
     return (
         <>
             <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
@@ -108,7 +134,7 @@ const BriefStep1 = ({ setTab }) => {
                     <></>
                 )}
             </div>
-            {data?.company_id == null ? (
+            {data?.company_id != null ? (
                 <div>
                     {' '}
                     <div className={`border-b border-gray-200 my-6`}></div>
@@ -154,7 +180,7 @@ const BriefStep1 = ({ setTab }) => {
                             <FormSelect2 label={`Lĩnh vực hoạt động kinh doanh`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} setValue={setCategoryCompany} />
                         </div>
                         <div className={''}>
-                            <FormSelect2 label={`Doanh thu năm gần nhất`} options={field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} setValue={setVolumCompany} />
+                            <FormSelect2 label={`Doanh thu năm gần nhất`} options={volum_field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} setValue={setVolumCompany} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
@@ -169,10 +195,10 @@ const BriefStep1 = ({ setTab }) => {
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 5 */}
                         <div className={''}>
-                            <FormSelect2 label={`Đăng ký loại tài khoản cần mở`} options={category_field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
+                            <FormSelect2 label={`Đăng ký loại tài khoản cần mở`} options={category_field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} setValue={setTypeAccount} />
                         </div>
                         <div className={''}>
-                            <FormSelect2 label={`Chọn loại tiền tệ`} options={currency_field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} />
+                            <FormSelect2 label={`Chọn loại tiền tệ`} options={currency_field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} setValue={setCurrency} />
                         </div>
                     </div>
                     <div className={`flex items-center mb-3`}>
@@ -193,19 +219,19 @@ const BriefStep1 = ({ setTab }) => {
                             <div className={`grid grid-cols-2 gap-8`}>
                                 {/* Row 4 */}
                                 <div className={''}>
-                                    <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`0123456789`} value={data?.boss_name} />
+                                    <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`0123456789`} value={''} setValue={setBenefitPersonName} />
                                 </div>
                                 <div className={''}>
-                                    <FormInput2 name={`name_7`} label={`Số CMND/CCCD`} placeholder={`ABC`} value={data?.boss_id_number} />
+                                    <FormInput2 name={`name_7`} label={`Số CMND/CCCD`} placeholder={`ABC`} value={''} setValue={setBenefitPersonId} />
                                 </div>
                             </div>
                             <div className={`grid grid-cols-2 gap-8`}>
                                 {/* Row 4 */}
                                 <div className={''}>
-                                    <FormInput2 name={`name_6`} label={`Số điện thoại di động`} placeholder={`0123456789`} value={data?.company_id} />
+                                    <FormInput2 name={`name_6`} label={`Số điện thoại di động`} placeholder={`0123456789`} value={''} setValue={setBenefitPersonPhone} />
                                 </div>
                                 <div className={''}>
-                                    <FormInput2 name={`name_7`} label={`Địa chỉ liên lạc`} placeholder={`ABC`} value={data?.boss_permanent_address} />
+                                    <FormInput2 name={`name_7`} label={`Địa chỉ liên lạc`} placeholder={`ABC`} value={''} setValue={setBenefitPersonAdres} />
                                 </div>
                             </div>
                         </div>

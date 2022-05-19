@@ -21,10 +21,6 @@ const BriefStep3 = ({ setTab }) => {
         data = setData(res);
     };
     const [loading, setLoading] = useState(false);
-    const field = [
-        { title: `Lĩnh vực 1`, value: `linh_vuc_1` },
-        { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
-    ];
     const onChangeUS = (e) => {};
     const nextStep = () => {
         setTab('step4');
@@ -34,12 +30,16 @@ const BriefStep3 = ({ setTab }) => {
     const [openModal, setOpenModal] = useState(false);
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
+    const [email, setEmail] = useState('');
+    const [currentAdress, setCurrentAdress] = useState('');
+    const [phone, setPhone] = useState('');
     useEffect(() => {
         if (data?.name != null) {
             localStorage.setItem('name', data?.name);
             localStorage.setItem('birthday', data?.birthday);
             localStorage.setItem('id', data?.id);
-            localStorage.setItem('issue_place', data?.issue_place);
+            localStorage.setItem('issue_place', data?.issue_by);
+            localStorage.setItem('issue_date', data?.issue_date);
             localStorage.setItem('national', data?.national);
             localStorage.setItem('address', data?.address);
         }
@@ -48,6 +48,11 @@ const BriefStep3 = ({ setTab }) => {
         }
         console.log(data);
     }, [data]);
+    useEffect(() => {
+        localStorage.setItem('email', email);
+        localStorage.setItem('current_adress', currentAdress);
+        localStorage.setItem('phone', phone);
+    }, [email, currentAdress, phone]);
     return (
         <>
             <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
@@ -102,7 +107,7 @@ const BriefStep3 = ({ setTab }) => {
                             <FormInput2 name={`name_6`} label={`Số CMND/CCCDD/Hộ chiếu`} placeholder={`0123456789`} value={data?.id} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Nơi cấp`} placeholder={`ABC`} value={data?.issue_place} />
+                            <FormInput2 name={`name_7`} label={`Nơi cấp`} placeholder={`ABC`} value={data?.issue_by} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
@@ -117,25 +122,25 @@ const BriefStep3 = ({ setTab }) => {
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 4 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Chức vụ`} placeholder={`0123456789`} value={''} />
+                            <FormInput2 name={`name_6`} label={`Chức vụ`} placeholder={`0123456789`} value={data?.position} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Số điện thoại`} placeholder={`ABC`} value={''} />
+                            <FormInput2 name={`name_7`} label={`Số điện thoại`} placeholder={`ABC`} value={''} setValue={setPhone} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 5 */}
                         <div className={''}>
-                            <FormSelect2 label={`Email`} options={field} name={`name_2`} defaultValue={``} className={``} />
+                            <FormInput2 label={`Email`} name={`name_2`} placeholder={`ABC`} value={''} setValue={setEmail} />
                         </div>
                         <div className={''}>
-                            <FormSelect2 label={`Địa chỉ thường trú`} options={field} name={`name_2`} defaultValue={``} className={``} />
+                            <FormInput2 label={`Địa chỉ thường trú`} name={`name_2`} placeholder={`ABC`} value={data?.address} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 4 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Địa chỉ liên lạc`} placeholder={`0123456789`} value={data?.address} />
+                            <FormInput2 name={`name_6`} label={`Địa chỉ liên lạc`} placeholder={`0123456789`} value={''} setValue={setCurrentAdress} />
                         </div>
                     </div>
                     <button onClick={nextStep} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-9 mt-3 rounded focus:outline-none focus:shadow-outline" type="button">
