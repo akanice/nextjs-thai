@@ -80,6 +80,7 @@ const BriefStep1 = ({ setTab }) => {
             localStorage.setItem('company_location', data?.company_location);
             localStorage.setItem('company_tel', data?.company_tel);
             localStorage.setItem('company_name_eng', data?.company_name_eng);
+            localStorage.setItem('boss_position', data?.boss_position);
         }
         if (data?.msg != null) {
             openModalGuide();

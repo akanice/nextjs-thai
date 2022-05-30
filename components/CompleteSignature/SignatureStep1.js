@@ -32,35 +32,37 @@ const SignatureStep1 = ({ setTab }) => {
             formData['_1ngayCap'] = localStorage.getItem('company_issue_first_date');
             formData['_1diaChiTruSoChinh'] = localStorage.getItem('company_location');
             formData['_1sdt'] = localStorage.getItem('company_tel');
-            formData['_1loaiHinhDN'] = '';
+            formData['_1loaiHinhDN'] = localStorage.getItem('type_company');
             formData['_1noiCap'] = localStorage.getItem('company_name');
-            formData['_1doanhThuNamGanNhat'] = '';
+            formData['_1doanhThuNamGanNhat'] = localStorage.getItem('volum_company');
 
-            formData['_1tenTKDKTV'] = '';
+            formData['_1tenTKDKTV'] = localStorage.getItem('company_name');
             formData['_1tenTKDKTA'] = localStorage.getItem('company_name_eng');
-            formData['_1linhVucKD'] = localStorage.getItem('company_name');
-            formData['_1noiCap'] = '';
-            formData['_2TTCSHHL'] = '';
+            formData['_1linhVucKD'] = localStorage.getItem('category_company');
+            formData['_1noiCap'] = localStorage.getItem('company_issue_place');
 
             formData['_3hoTen'] = localStorage.getItem('boss_name');
             formData['_3ngaySinh'] = localStorage.getItem('boss_birthday');
-            formData['_3chucVu'] = '';
+            formData['_3chucVu'] = localStorage.getItem('boss_position');
             formData['_3soCMND'] = localStorage.getItem('boss_id');
             formData['_3ngayCap'] = localStorage.getItem('boss_issue_date');
             formData['_3noiCap'] = localStorage.getItem('boss_issue_place');
 
-            formData['_3sdti'] = '';
-            formData['_3diaChiThuongTru'] = localStorage.getItem('boss_address');
-            formData['_3email'] = '';
+            formData['_3email'] = localStorage.getItem('boss_email');
+            formData['_3diaChiLienLac'] = localStorage.getItem('boss_current_adress');
+            formData['_3sdti'] = localStorage.getItem('boss_phone');
 
             formData['_4hoTen'] = localStorage.getItem('name');
             formData['_4ngaySinh'] = localStorage.getItem('birthday');
-            formData['_4chucVu'] = '';
+            formData['_4chucVu'] = localStorage.getItem('appointment_position');
             formData['_4soCMND'] = localStorage.getItem('id');
             formData['_4ngayCap'] = localStorage.getItem('issue_date');
             formData['_4noiCap'] = localStorage.getItem('issue_place');
 
             formData['_4diaChiThuongTru'] = localStorage.getItem('address');
+            formData['_4email'] = localStorage.getItem('email');
+            formData['_4diaChiLienHe'] = localStorage.getItem('current_adress');
+            formData['_4soDTi'] = localStorage.getItem('phone');
 
             formData['_1doanhThuNamGanNhat'] = localStorage.getItem('volum_company');
             formData['_6chonLoaiTienTe'] = localStorage.getItem('currency_company');
@@ -76,13 +78,7 @@ const SignatureStep1 = ({ setTab }) => {
             } else {
                 formData['_2TTCSHHL'] = 'Không';
             }
-            formData['_3email'] = localStorage.getItem('boss_email');
-            formData['_3diaChiLienLac'] = localStorage.getItem('boss_current_adress');
-            formData['_3sdti'] = localStorage.getItem('boss_phone');
-
-            formData['_4email'] = localStorage.getItem('email');
-            formData['_4diaChiLienHe'] = localStorage.getItem('current_adress');
-            formData['_4soDTi'] = localStorage.getItem('phone');
+            nextStep();
             var url = 'http://localhost:8583/business/api/v1/export/generate';
             const res = await axios
                 .post(url, formData, {
@@ -108,7 +104,6 @@ const SignatureStep1 = ({ setTab }) => {
             // setUploadedFile({ fileName, filePath });
             setLoading(false);
             console.log(JSON.stringify(res.data));
-            nextStep();
         } catch (err) {
             setLoading(false);
             console.log(err);

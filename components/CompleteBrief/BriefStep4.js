@@ -21,10 +21,6 @@ const BriefStep4 = ({ setTab }) => {
         data = setData(res);
     };
     const [loading, setLoading] = useState(false);
-    const field = [
-        { title: `Lĩnh vực 1`, value: `linh_vuc_1` },
-        { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
-    ];
     const onChangeUS = (e) => {};
     const nextStep = () => {
         setTab('step5');
@@ -35,10 +31,12 @@ const BriefStep4 = ({ setTab }) => {
         if (data?.msg != null) {
             openModalGuide();
         }
+        localStorage.setItem('appointment_position', data?.appointment_position);
     }, [data]);
     const [openModal, setOpenModal] = useState(false);
     const openModalGuide = () => setOpenModal(true);
     const closeModalGuide = () => setOpenModal(false);
+
     return (
         <>
             <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">

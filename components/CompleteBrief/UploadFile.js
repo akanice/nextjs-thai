@@ -3,6 +3,7 @@ import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { Button } from '@mui/material';
 import ReactLoading from 'react-loading';
 import axios from 'axios';
+import { FileUploader } from 'react-drag-drop-files';
 const UploadFile = forwardRef((props, ref) => {
     const { sendDataToParent, type, setLoading, text, defaultPicture, className } = props;
     const fileInput = useRef();
@@ -20,8 +21,7 @@ const UploadFile = forwardRef((props, ref) => {
     const onChange = (e) => {
         setFile(e.target.files[0]);
         setFilename(e.target.files[0].name);
-        setFilePath(e.target.files[0].filepath);
-        console.log(e);
+        setFilePath(e.target.files[0].filepath); 
         e.preventDefault();
     };
     useEffect(() => {
@@ -110,4 +110,4 @@ const UploadFile = forwardRef((props, ref) => {
     );
 });
 UploadFile.displayName = `UpdatePictureCircle`;
-export default UploadFile;
+export default UploadFile;  
