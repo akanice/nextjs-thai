@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '/components/Header';
 import Head from '../Common/Head';
 import Breadcrumb from '@components/Header/Breadcrumb';
+import Footer from '@components/Footer';
 
 const MainLayout = ({ children, title }) => {
 
@@ -15,6 +16,7 @@ const MainLayout = ({ children, title }) => {
                     {children}
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

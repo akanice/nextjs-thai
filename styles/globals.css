@@ -83,7 +83,7 @@ input.style-2:checked ~ .bg-toggle {
   border-radius: 0;
 }
 .timeline-label {
-  top: 50%;
+  top: 40%;
   left: 0;
   transform: translate(-55%, -100%);
 }

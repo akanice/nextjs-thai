@@ -193,8 +193,8 @@ const BriefStep1 = ({ setTab }) => {
                             <FormInput2 name={`name_7`} label={`Tên tài khoản đăng ký với tài khoản tiếng Anh`} placeholder={`ABC`} value={data?.company_name_eng} />
                         </div>
                     </div>
-                    <div className={`grid grid-cols-2 gap-8`}>
-                        {/* Row 5 */}
+                    {/* <div className={`grid grid-cols-2 gap-8`}>
+                        
                         <div className={''}>
                             <FormSelect2 label={`Đăng ký loại tài khoản cần mở`} options={category_field} name={`name_2`} defaultValue={`linh_vuc_1`} className={``} setValue={setTypeAccount} />
                         </div>
@@ -213,7 +213,7 @@ const BriefStep1 = ({ setTab }) => {
                         <label htmlFor="flexCheckChecked" className={`cursor-pointer`}>
                             Đăng ký thông tin về chủ sở hữu hưởng lợi
                         </label>
-                    </div>
+                    </div> */}
                     <div className={`border-b border-gray-200 my-6`}></div>
                     {owner ? (
                         <div>

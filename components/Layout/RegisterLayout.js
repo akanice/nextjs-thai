@@ -1,6 +1,6 @@
 import HeaderPostCheck from '/components/Header/HeaderPostCheck';
 import Head from '../Common/Head';
-// import Footer from '/components/Footer';
+// import Footer from '@components/Footer';
 import React from 'react';
 import LeftColumnPC from '@components/Common/LeftColumnPC';
 // creates a beautiful scrollbar

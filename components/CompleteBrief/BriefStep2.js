@@ -6,6 +6,8 @@ import UploadFile from './UploadFile';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import ReactLoading from 'react-loading';
+import { route } from 'next/dist/server/router';
+import { useRouter } from 'next/router';
 const BriefStep2 = ({ setTab }) => {
     const style = {
         position: 'absolute',
@@ -20,38 +22,29 @@ const BriefStep2 = ({ setTab }) => {
     const sendDataToParent = (res) => {
         data = setData(res);
     };
+    const router = useRouter();
+    const nextPage = () => {
+        router.push('/register/complete-signature');
+    };
     const [loading, setLoading] = useState(false);
+    const field = [
+        { title: `Lĩnh vực 1`, value: `linh_vuc_1` },
+        { title: `Lĩnh vực 2`, value: `linh_vuc_2` }
+    ];
     const onChangeUS = (e) => {};
     const nextStep = () => {
         setTab('step3');
     };
-    const [email, setEmail] = useState('');
-    const [currentAdress, setCurrentAdress] = useState('');
-    const [phone, setPhone] = useState('');
     const user = [{ avatar: '/images/leftcol-avatar.png' }];
     const avatarRef = useRef();
-    const [openModal, setOpenModal] = useState(false);
-    const openModalGuide = () => setOpenModal(true);
-    const closeModalGuide = () => setOpenModal(false);
     useEffect(() => {
-        if (data?.name != null) {
-            localStorage.setItem('boss_name', data?.name);
-            localStorage.setItem('boss_birthday', data?.birthday);
-            localStorage.setItem('boss_id', data?.id);
-            localStorage.setItem('boss_issue_place', data?.issue_by);
-            localStorage.setItem('boss_issue_date', data?.issue_date);
-            localStorage.setItem('boss_national', data?.national);
-            localStorage.setItem('boss_address', data?.address);
-        }
         if (data?.msg != null) {
             openModalGuide();
         }
     }, [data]);
-    useEffect(() => {
-        localStorage.setItem('boss_email', email);
-        localStorage.setItem('boss_current_adress', currentAdress);
-        localStorage.setItem('boss_phone', phone);
-    }, [email, currentAdress, phone]);
+    const [openModal, setOpenModal] = useState(false);
+    const openModalGuide = () => setOpenModal(true);
+    const closeModalGuide = () => setOpenModal(false);
     return (
         <>
             <Modal open={openModal} onClose={closeModalGuide} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
@@ -66,14 +59,14 @@ const BriefStep2 = ({ setTab }) => {
             </Modal>
             <div className={`upload-docs`}>
                 <UploadFile
-                    sendDataToParent={sendDataToParent}
-                    type={'GTTT'}
-                    setLoading={setLoading}
                     // defaultPicture={user.avatar}
+                    sendDataToParent={sendDataToParent}
+                    type={'giay_dkmst'}
+                    setLoading={setLoading}
                     ref={avatarRef}
                     className={`normal-case text-gray-600 text-xs`}
                 />
-                {data?.name != null ? (
+                {data?.tax_number != null ? (
                     <div className={`flex justify-start items-center mt-6`}>
                         <div className={`text-green-500 mr-3`}>
                             <AiFillCheckCircle size={24} />
@@ -89,24 +82,25 @@ const BriefStep2 = ({ setTab }) => {
             </div>
 
             <div className={`border-b border-gray-200 my-6`}></div>
-            {data?.name ? (
+            {data?.tax_number ? (
                 <div>
+                    {' '}
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 1 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Họ và tên`} placeholder={`Công ty cổ phần ABC`} value={data?.name} />
+                            <FormInput2 name={`name_6`} label={`Mã số thuế`} placeholder={`Công ty cổ phần ABC`} value={data?.tax_number} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Ngày tháng năm sinh`} placeholder={`ABC`} value={data?.birthday} />
+                            <FormInput2 name={`name_7`} label={`Tên người nộp thuế`} placeholder={`ABC`} value={data?.tax_payer} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 2 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Số CMND/CCCDD/Hộ chiếu`} placeholder={`0123456789`} value={data?.id} />
+                            <FormInput2 name={`name_6`} label={`Mã số chứng nhận ĐKKD`} placeholder={`0123456789`} value={data?.business_registration_number} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Nơi cấp`} placeholder={`ABC`} value={data?.issue_by} />
+                            <FormInput2 name={`name_7`} label={`Ngày hoạt động`} placeholder={`ABC`} value={''} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
@@ -115,40 +109,16 @@ const BriefStep2 = ({ setTab }) => {
                             <FormInput2 name={`name_6`} label={`Ngày cấp`} placeholder={`21/08/2017`} value={data?.issue_date} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Quốc tịch`} placeholder={`ABC`} value={data?.national} />
+                            <FormInput2 name={`name_7`} label={`Cơ quan quản lý trực tiếp`} placeholder={`ABC`} value={data?.issue_place} />
                         </div>
                     </div>
-                    <div className={`grid grid-cols-2 gap-8`}>
-                        {/* Row 4 */}
-                        <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Chức vụ`} placeholder={`0123456789`} value={data?.position} />
-                        </div>
-                        <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Số điện thoại`} placeholder={`ABC`} value={''} setValue={setPhone} />
-                        </div>
-                    </div>
-                    <div className={`grid grid-cols-2 gap-8`}>
-                        {/* Row 5 */}
-                        <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Email`} placeholder={`ABC`} value={''} setValue={setEmail} />
-                        </div>
-                        <div className={''}>
-                            <FormInput2 label={`Địa chỉ thường trú`} name={`name_2`} placeholder={`ABC`} value={data?.address} />
-                        </div>
-                    </div>
-                    <div className={`grid grid-cols-2 gap-8`}>
-                        {/* Row 4 */}
-                        <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Địa chỉ liên lạc`} placeholder={`0123456789`} value={''} setValue={setCurrentAdress} />
-                        </div>
-                    </div>
-                    <button onClick={nextStep} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-9 mt-3 rounded focus:outline-none focus:shadow-outline" type="button">
-                        Tiếp tục
-                    </button>
                 </div>
             ) : (
                 <></>
             )}
+            <button onClick={nextPage} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-9 mt-3 rounded focus:outline-none focus:shadow-outline" type="button">
+                Tiếp tục
+            </button>
         </>
     );
 };

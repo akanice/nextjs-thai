@@ -9,8 +9,8 @@ const ModalCodeExist = ({name,checked,className}) => {
   return (
     <>
         <div className={`flex flex-col justify-center items-center`}>
-          <h3 className={`font-bold text-black text-2xl mb-3`}>Mã số doanh nghiệp đã tồn tại</h3>
-          <p className={`mb-3`}>Mã số doanh nghiệp đã được cấp tài khoản Online, Quý khách có muốn tạo tài khoản mới không?</p>
+          <h3 className={`font-bold text-lg text-link mb-3`}>Mã số doanh nghiệp đã tồn tại</h3>
+          <p className={`mb-3 text-center`}>Mã số doanh nghiệp đã được cấp tài khoản Online,<br /> Quý khách có muốn tạo tài khoản mới không?</p>
           <div className={`w-96 py-6 border-t border-dashed border-sky-100`}>
             <ul className={`list-disc`}>
                 <li className={`mb-2 flex items-center list-item list-inside`}>

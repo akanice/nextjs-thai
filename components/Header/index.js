@@ -114,7 +114,7 @@ const Header = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <ul className={`flex aligns-center`}>
+                        <ul className={`flex aligns-center font-bold`}>
                             <li>
                                 <a href="#" className={`px-6 py-3`}>
                                     Trang chủ
