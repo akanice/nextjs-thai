@@ -6,6 +6,8 @@ import UploadFile from './UploadFile';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import ReactLoading from 'react-loading';
+import FileUpload from './FileUpload';
+
 const BriefStep1 = ({ setTab }) => {
     const style = {
         position: 'absolute',

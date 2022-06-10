@@ -70,8 +70,10 @@ const UploadFile = forwardRef((props, ref) => {
     };
     const file1 = null; // Delete this and replace file1 with file
 
+    // Refer: https://dev.to/chandrapantachhetri/responsive-react-file-upload-component-with-drag-and-drop-4ef8
+    
     return (
-        <Button transparent onClick={() => fileInput.current.click()} className={`${className}`}>
+        <>
             <div className={`flex flex-col items-center w-40 h-48 rounded-xl border-main border-2 border-dotted`}>
                 <div className={`flex self-center flex-col items-center bg-gray-50 justify-center h-full w-full relative`}>
                     <input
@@ -79,7 +81,7 @@ const UploadFile = forwardRef((props, ref) => {
                             event.target.value = null;
                         }}
                         ref={fileInput}
-                        className="hidden"
+                        className="opacity-0 h-full w-full z-50"
                         type="file"
                         accept=""
                         multiple={true}
@@ -106,7 +108,7 @@ const UploadFile = forwardRef((props, ref) => {
                     )}
                 </div>
             </div>
-        </Button>
+        </>
     );
 });
 UploadFile.displayName = `UpdatePictureCircle`;

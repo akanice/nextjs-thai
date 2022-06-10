@@ -20,7 +20,7 @@ const CompleteBrief = (page) => {
     const [openModal2, setOpenModal2] = useState(true);
     const openModalGuide2 = () => setOpenModal2(true);
     const closeModalGuide2 = () => setOpenModal2(false);
-    const [tab, setTab] = useState(`step5`);
+    const [tab, setTab] = useState(`step1`);
     return (
         <>
             <ProgressStepper page={2} />

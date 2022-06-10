@@ -13,6 +13,8 @@ const Home = () => {
     const closeModalGuide = () => setOpenModal(false);
 
     const [openModal2, setOpenModal2] = useState(false);
+    const openModalGuide2 = () => setOpenModal2(true);
+    const closeModalGuide2 = () => setOpenModal2(false);
 
     const router = useRouter();
     const nextPage = () => {

@@ -8,8 +8,8 @@ const Tab3 = ({ classInput, classTab }) => {
         <>
             <div>
                 <div className={classTab}>
-                    <input className={classInput} type="checkbox" defaultValue="" id="flexCheckChecked" />
-                    <label htmlFor="flexCheckChecked" className={`cursor-pointer mr-auto text-black font-bold`}>
+                    <input className={classInput} type="checkbox" defaultValue="" id="flexCheckChecked3" />
+                    <label htmlFor="flexCheckChecked3" className={`cursor-pointer mr-auto text-black font-bold`}>
                         Khách hàng đang nhận Uỷ thác/Uỷ quyền của tổ chức/cá nhân khác
                     </label>
                 </div>
