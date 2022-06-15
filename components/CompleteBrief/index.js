@@ -6,7 +6,7 @@ import BriefStep2 from './BriefStep2';
 import BriefStep3 from './BriefStep3';
 import BriefStep4 from './BriefStep4';
 import BriefStep5new from './BriefStep5new';
-import {AiFillFileText} from 'react-icons/ai';
+import { AiFillFileText } from 'react-icons/ai';
 import ModalNoticeFirst from '@components/Common/Modal/ModalNoticeFirst';
 
 const CompleteBrief = (page) => {
@@ -48,10 +48,11 @@ const CompleteBrief = (page) => {
                                     <p className={tab == 'step1' ? 'text-gray-400' : 'text-gray-300'}>Giấy chứng nhận đăng ký kinh doanh/đăng ký doanh nghiệp còn hiệu lực</p>
                                 </div>
                                 <div>
-                                    <div className={`flex items-center py-2 px-3 text-sm border border-dashed rounded border-gray-300`}><AiFillFileText size={13} /> <span className={`ml-2`}>Giấy tờ mẫu</span></div>
+                                    <div className={`flex items-center py-2 px-3 text-sm border border-dashed rounded border-gray-300`}>
+                                        <AiFillFileText size={13} /> <span className={`ml-2`}>Giấy tờ mẫu</span>
+                                    </div>
                                 </div>
                             </div>
-
                         </button>
                         <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
                             <span className="text-center text-gray-400 text-sm w-full">1</span>

@@ -22,6 +22,7 @@ const BriefStep1 = ({ setTab }) => {
     const sendDataToParent = (res) => {
         data = setData(res);
     };
+    const dateCompare = new Date('01/07/2015');
     const [loading, setLoading] = useState(false);
     const field = [
         { title: `1. Nông nghiệp và hoạt động dịch vụ có liên quan`, value: `1. Nông nghiệp và hoạt động dịch vụ có liên quan` },
@@ -69,7 +70,7 @@ const BriefStep1 = ({ setTab }) => {
     const [benefitPersonAdress, setBenefitPersonAdres] = useState('');
     const [benefitPersonId, setBenefitPersonId] = useState('');
     const [benefitPersonPhone, setBenefitPersonPhone] = useState('');
-
+    const [mst, setMst] = useState('');
     useEffect(() => {
         if (data?.company_id != null) {
             localStorage.setItem('company_name', data?.company_name);
@@ -83,6 +84,15 @@ const BriefStep1 = ({ setTab }) => {
             localStorage.setItem('company_tel', data?.company_tel);
             localStorage.setItem('company_name_eng', data?.company_name_eng);
             localStorage.setItem('boss_position', data?.boss_position);
+            const dateString = data?.company_issue_first_date.replace(' tháng ', '/').replace(' năm ', '/');
+            const dateConvert = new Date(dateString);
+            console.log('test test');
+            console.log(dateCompare < dateConvert);
+            if (dateCompare < dateConvert) {
+                setMst('mst');
+                localStorage.setItem('mst', 'mst');
+                console.log(mst);
+            }
         }
         if (data?.msg != null) {
             openModalGuide();
@@ -156,7 +166,7 @@ const BriefStep1 = ({ setTab }) => {
                             <FormInput2 name={`name_6`} label={`Mã số doanh nghiệp`} placeholder={`0123456789`} value={data?.company_id} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Mã số thuế`} placeholder={`ABC`} value={data?.company_tax_code} />
+                            <FormInput2 name={`name_7`} label={`Mã số thuế`} placeholder={`ABC`} value={mst == 'mst' ? data?.company_id : ''} disabled={true} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>

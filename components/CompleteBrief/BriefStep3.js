@@ -122,16 +122,16 @@ const BriefStep3 = ({ setTab }) => {
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 4 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Chức vụ`} placeholder={`0123456789`} value={data?.position} />
+                            <FormInput2 name={`name_6`} label={`Chức vụ`} placeholder={`0123456789`} value={localStorage.getItem('boss_position')} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Số điện thoại`} placeholder={`ABC`} value={''} setValue={setPhone} />
+                            <FormInput2 name={`name_7`} label={`Số điện thoại`} placeholder={`ABC`} value={''} setValue={setPhone} disabled={false} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 5 */}
                         <div className={''}>
-                            <FormInput2 label={`Email`} name={`name_2`} placeholder={`ABC`} value={''} setValue={setEmail} />
+                            <FormInput2 label={`Email`} name={`name_2`} placeholder={`ABC`} value={''} setValue={setEmail} disabled={false} />
                         </div>
                         <div className={''}>
                             <FormInput2 label={`Địa chỉ thường trú`} name={`name_2`} placeholder={`ABC`} value={data?.address} />
@@ -140,7 +140,7 @@ const BriefStep3 = ({ setTab }) => {
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 4 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Địa chỉ liên lạc`} placeholder={`0123456789`} value={''} setValue={setCurrentAdress} />
+                            <FormInput2 name={`name_6`} label={`Địa chỉ liên lạc`} placeholder={`0123456789`} value={''} setValue={setCurrentAdress} disabled={false} />
                         </div>
                     </div>
                     <button onClick={nextStep} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-9 mt-3 rounded focus:outline-none focus:shadow-outline" type="button">
