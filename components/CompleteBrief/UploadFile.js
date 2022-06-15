@@ -94,7 +94,7 @@ const UploadFile = forwardRef((props, ref) => {
                     {file1 === null && ( // Change to "file" later
                         <div className={`absolute h-full flex flex-col justify-center items-center`}>
                             <AiOutlineCloudUpload size={24} />
-                            <div className={`text-sm`}>
+                            <div className={`text-sm text-center`}>
                                 Kéo/thả tài liệu<br />vào đây hoặc
                                 <br /> <span className={`text-sky-500 underline`}>chọn từ máy tính</span>
                             </div>
