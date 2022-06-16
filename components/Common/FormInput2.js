@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const FormInput = ({ name, label, placeholder, value, disabled, setValue }) => {
+const FormInput = ({ name, label, placeholder, value, disabled = true, setValue }) => {
     function handleChange(event) {
         setValue(event.target.value);
     }

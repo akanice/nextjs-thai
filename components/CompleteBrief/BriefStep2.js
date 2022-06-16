@@ -88,35 +88,35 @@ const BriefStep2 = ({ setTab }) => {
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 1 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Mã số thuế`} placeholder={`Công ty cổ phần ABC`} value={data?.tax_number} />
+                            <FormInput2 name={`name_6`} label={`Mã số thuế`} placeholder={`Công ty cổ phần ABC`} value={data?.tax_number} disabled={true} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Tên người nộp thuế`} placeholder={`ABC`} value={data?.tax_payer} />
+                            <FormInput2 name={`name_7`} label={`Tên người nộp thuế`} placeholder={`ABC`} value={data?.tax_payer} disabled={true} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 2 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Mã số chứng nhận ĐKKD`} placeholder={`0123456789`} value={data?.business_registration_number} />
+                            <FormInput2 name={`name_6`} label={`Mã số chứng nhận ĐKKD`} placeholder={`0123456789`} value={data?.business_registration_number} disabled={true} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Ngày hoạt động`} placeholder={`ABC`} value={''} />
+                            <FormInput2 name={`name_7`} label={`Ngày chứng nhận đăng kí kinh doanh`} placeholder={`ABC`} value={localStorage.getItem('company_issue_first_date')} disabled={true} />
                         </div>
                     </div>
                     <div className={`grid grid-cols-2 gap-8`}>
                         {/* Row 3 */}
                         <div className={''}>
-                            <FormInput2 name={`name_6`} label={`Ngày cấp`} placeholder={`21/08/2017`} value={data?.issue_date} />
+                            <FormInput2 name={`name_6`} label={`Ngày cấp`} placeholder={`21/08/2017`} value={data?.issue_date} disabled={true} />
                         </div>
                         <div className={''}>
-                            <FormInput2 name={`name_7`} label={`Cơ quan quản lý trực tiếp`} placeholder={`ABC`} value={data?.issue_place} />
+                            <FormInput2 name={`name_7`} label={`Cơ quan quản lý trực tiếp`} placeholder={`ABC`} value={data?.issue_place} disabled={true} />
                         </div>
                     </div>
                 </div>
             ) : (
                 <></>
             )}
-            <button onClick={nextPage} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-9 mt-3 rounded focus:outline-none focus:shadow-outline" type="button">
+            <button onClick={nextStep} className="bg-second-color hover:text-yellow-500 text-black font-medium py-2 px-9 mt-3 rounded focus:outline-none focus:shadow-outline" type="button">
                 Tiếp tục
             </button>
         </>

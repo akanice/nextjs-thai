@@ -6,7 +6,7 @@ import BriefStep2 from './BriefStep2';
 import BriefStep3 from './BriefStep3';
 import BriefStep4 from './BriefStep4';
 import BriefStep5new from './BriefStep5new';
-import {AiFillFileText} from 'react-icons/ai';
+import { AiFillFileText } from 'react-icons/ai';
 import ModalNoticeFirst from '@components/Common/Modal/ModalNoticeFirst';
 
 const CompleteBrief = (page) => {
@@ -20,7 +20,7 @@ const CompleteBrief = (page) => {
     const [openModal2, setOpenModal2] = useState(true);
     const openModalGuide2 = () => setOpenModal2(true);
     const closeModalGuide2 = () => setOpenModal2(false);
-    const [tab, setTab] = useState(`step4`);
+    const [tab, setTab] = useState(`step3`);
     return (
         <>
             <ProgressStepper page={2} />
@@ -48,22 +48,15 @@ const CompleteBrief = (page) => {
                                     <p className={tab == 'step1' ? 'text-gray-400' : 'text-gray-300'}>Giấy chứng nhận đăng ký kinh doanh/đăng ký doanh nghiệp còn hiệu lực</p>
                                 </div>
                                 <div>
-                                    <div className={`flex items-center py-2 px-3 text-sm border border-dashed rounded border-gray-300`}><AiFillFileText size={13} /> <span className={`ml-2`}>Giấy tờ mẫu</span></div>
+                                    <div className={`flex items-center py-2 px-3 text-sm border border-dashed rounded border-gray-300`}>
+                                        <AiFillFileText size={13} /> <span className={`ml-2`}>Giấy tờ mẫu</span>
+                                    </div>
                                 </div>
                             </div>
-
                         </button>
-                        {tab == `step1` ? (
-                            <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
-                                <span className="text-center text-gray-400 text-sm w-full">1</span>
-                            </div>
-                        ) : (
-                            <div className="w-6 h-6 mx-auto bg-sky-100 rounded-full text-lg border border-sky-500 flex items-center absolute timeline-label">
-                                <span className="text-center text-sm text-sky-500 w-full">
-                                    <i className="fas fa-check"></i>
-                                </span>
-                            </div>
-                        )}
+                        <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
+                            <span className="text-center text-gray-400 text-sm w-full">1</span>
+                        </div>
                     </h2>
                     <div id="collapseOne" className={`accordion-collapse collapse px-5 pb-9 ` + (tab == `step1` ? 'show' : '')} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <BriefStep1 setTab={setTab} />
@@ -77,17 +70,9 @@ const CompleteBrief = (page) => {
                             <span className={`font-bold text-md ` + (tab == 'step2' ? 'text-black' : 'text-gray-400')}>Giấy đăng kí mã số thuế (tuỳ chọn)</span>
                             <p className={tab == 'step2' ? 'text-gray-400' : 'text-gray-300'}>Chỉ áp dụng với doanh nghiệp thành lập trước ngày 01/07/2015</p>
                         </button>
-                        {tab == `step2` ? (
-                            <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
-                                <span className="text-center text-gray-400 text-sm w-full">2</span>
-                            </div>
-                        ) : (
-                            <div className="w-6 h-6 mx-auto bg-sky-100 rounded-full text-lg border border-sky-500 flex items-center absolute timeline-label">
-                                <span className="text-center text-sm text-sky-500 w-full">
-                                    <i className="fas fa-check"></i>
-                                </span>
-                            </div>
-                        )}
+                        <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
+                            <span className="text-center text-gray-400 text-sm w-full">2</span>
+                        </div>
                     </h2>
                     <div id="collapse2" className={`accordion-collapse collapse px-5 pb-9 ` + (tab == `step2` ? 'show' : '')} aria-labelledby="heading2" data-bs-parent="#accordionExample">
                         <BriefStep2 setTab={setTab} />
@@ -101,21 +86,9 @@ const CompleteBrief = (page) => {
                             <span className={`font-bold text-md ` + (tab == 'step3' ? 'text-black' : 'text-gray-400')}>Giấy tờ tuỳ thân & Mẫu chữ ký của Người đại diện theo pháp luật</span>
                             <p className={tab == 'step3' ? 'text-gray-400' : 'text-gray-300'}>CMND/CCCD/Hộ chiếu & chữ ký mẫu còn hạn sử dụng</p>
                         </button>
-                        {tab > `step3` ? (
-                            <div className="w-6 h-6 mx-auto bg-sky-100 rounded-full text-lg border border-sky-500 flex items-center absolute timeline-label">
-                                <span className="text-center text-sm text-sky-500 w-full">
-                                    <i className="fas fa-check"></i>
-                                </span>
-                            </div>
-                        ) : tab == `step3` ? (
-                            <div className="w-6 h-6 mx-auto bg-sky-500 border border-sky-500 rounded-full text-lg text-white flex items-center absolute timeline-label">
-                                <span className="text-center text-sm w-full">3</span>
-                            </div>
-                        ) : (
-                            <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
-                                <span className="text-center text-gray-400 text-sm w-full">3</span>
-                            </div>
-                        )}
+                        <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
+                            <span className="text-center text-gray-400 text-sm w-full">3</span>
+                        </div>
                     </h2>
                     <div id="collapse3" className={`accordion-collapse collapse px-5 pb-9 ` + (tab == `step3` ? 'show' : '')} aria-labelledby="heading3" data-bs-parent="#accordionExample">
                         <BriefStep3 setTab={setTab} />
@@ -128,21 +101,9 @@ const CompleteBrief = (page) => {
                             <span className={`font-bold text-md ` + (tab == 'step4' ? 'text-black' : 'text-gray-400')}>Giấy tờ tuỳ thân, Giấy bổ nhiệm & Mẫu chữ ký của Kế toán trưởng/Người phụ trách kế toán</span>
                             <p className={tab == 'step4' ? 'text-gray-400' : 'text-gray-300'}>CMND/CCCD/Hộ chiếu & Giấy tờ bổ nhiệm còn hạn sử dụng</p>
                         </button>
-                        {tab > `step4` ? (
-                            <div className="w-6 h-6 mx-auto bg-sky-100 rounded-full text-lg border border-sky-500 flex items-center absolute timeline-label">
-                                <span className="text-center text-sm text-sky-500 w-full">
-                                    <i className="fas fa-check"></i>
-                                </span>
-                            </div>
-                        ) : tab == `step4` ? (
-                            <div className="w-6 h-6 mx-auto bg-sky-500 border border-sky-500 rounded-full text-lg text-white flex items-center absolute timeline-label">
-                                <span className="text-center text-sm w-full">4</span>
-                            </div>
-                        ) : (
-                            <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
-                                <span className="text-center text-gray-400 text-sm w-full">4</span>
-                            </div>
-                        )}
+                        <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
+                            <span className="text-center text-gray-400 text-sm w-full">4</span>
+                        </div>
                     </h2>
                     <div id="collapse4" className={`accordion-collapse collapse px-5 pb-9 ` + (tab == `step4` ? 'show' : '')} aria-labelledby="heading4" data-bs-parent="#accordionExample">
                         <BriefStep4 setTab={setTab} />
@@ -155,21 +116,9 @@ const CompleteBrief = (page) => {
                             <span className={`font-bold text-md ` + (tab == 'step5' ? 'text-black' : 'text-gray-400')}>Cung cấp thông tin và Đăng ký dịch vụ khác</span>
                             <p className={tab == 'step5' ? 'text-gray-400' : 'text-gray-300'}>Thông tin Fatca, chủ sở hữu hưởng lợi, SMS Banking...</p>
                         </button>
-                        {tab > `step5` ? (
-                            <div className="w-6 h-6 mx-auto bg-sky-200 rounded-full text-lg border border-sky-300 flex items-center">
-                                <span className="text-center text-sm text-sky-400 w-full">
-                                    <i className="fas fa-check"></i>
-                                </span>
-                            </div>
-                        ) : tab == `step5` ? (
-                            <div className="w-6 h-6 mx-auto bg-sky-500 border border-sky-500 rounded-full text-lg text-white flex items-center absolute timeline-label">
-                                <span className="text-center text-sm w-full">5</span>
-                            </div>
-                        ) : (
-                            <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
-                                <span className="text-center text-gray-400 text-sm w-full">5</span>
-                            </div>
-                        )}
+                        <div className="w-6 h-6 mx-auto bg-white rounded-full text-lg border border-gray-300 flex items-center absolute timeline-label">
+                            <span className="text-center text-gray-400 text-sm w-full">5</span>
+                        </div>
                     </h2>
                     <div id="collapse5" className={`accordion-collapse collapse px-5 pb-9 ` + (tab == `step5` ? 'show' : '')} aria-labelledby="heading5" data-bs-parent="#accordionExample">
                         <BriefStep5new setTab={setTab} />
