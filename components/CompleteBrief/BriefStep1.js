@@ -86,8 +86,7 @@ const BriefStep1 = ({ setTab }) => {
             localStorage.setItem('boss_position', data?.boss_position);
             const dateString = data?.company_issue_first_date.replace(' tháng ', '/').replace(' năm ', '/');
             const dateConvert = new Date(dateString);
-            console.log('test test');
-            console.log(dateCompare < dateConvert);
+
             if (dateCompare < dateConvert) {
                 setMst('mst');
                 localStorage.setItem('mst', 'mst');
@@ -103,7 +102,6 @@ const BriefStep1 = ({ setTab }) => {
         localStorage.setItem('currency_company', currency);
         localStorage.setItem('category_company', categoryCompany);
         localStorage.setItem('type_company', typeAccount);
-
         localStorage.setItem('benefit_name', benefitPersonName);
         localStorage.setItem('benefit_phone', benefitPersonPhone);
         localStorage.setItem('benefit_id', benefitPersonId);

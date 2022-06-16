@@ -66,14 +66,24 @@ const BriefStep3 = ({ setTab }) => {
                 </Box>
             </Modal>
             <div className={`upload-docs`}>
-                <UploadFile
-                    sendDataToParent={sendDataToParent}
-                    type={'GTTT'}
-                    setLoading={setLoading}
-                    // defaultPicture={user.avatar}
-                    ref={avatarRef}
-                    className={`normal-case text-gray-600 text-xs`}
-                />
+                <div>
+                    <UploadFile
+                        sendDataToParent={sendDataToParent}
+                        type={'GTTT'}
+                        setLoading={setLoading}
+                        // defaultPicture={user.avatar}
+                        ref={avatarRef}
+                        className={`normal-case text-gray-600 text-xs`}
+                    />
+                    <UploadFile
+                        sendDataToParent={sendDataToParent}
+                        type={'GTTT'}
+                        setLoading={setLoading}
+                        // defaultPicture={user.avatar}
+                        ref={avatarRef}
+                        className={`normal-case text-gray-600 text-xs`}
+                    />
+                </div>
                 {data?.name != null ? (
                     <div className={`flex justify-start items-center mt-6`}>
                         <div className={`text-green-500 mr-3`}>
