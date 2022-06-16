@@ -3,7 +3,6 @@ import {MdCheckCircleOutline} from "react-icons/md";
 import {AiOutlineCheck} from "react-icons/ai";
 
 const ModalNoticeFirst = ({name,checked,className}) => {
-
   // const [value, setValue] = useState(``);
 
   return (

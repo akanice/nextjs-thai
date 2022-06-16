@@ -65,14 +65,26 @@ const BriefStep3 = ({ setTab }) => {
                     <ReactLoading type="cylon" color="#0000FF" height={100} width={50} />
                 </Box>
             </Modal>
-            <div className={`upload-docs`}>
+            <div className={`upload-docs flex`}>
                 <UploadFile
                     sendDataToParent={sendDataToParent}
                     type={'GTTT'}
                     setLoading={setLoading}
                     // defaultPicture={user.avatar}
                     ref={avatarRef}
-                    className={`normal-case text-gray-600 text-xs`}
+                    textSupport={`Hỗ trợ file pdf`}
+                    label={`Giấy tờ tùy thân`}
+                    className={`mr-3`}
+                />
+                <UploadFile
+                    sendDataToParent={sendDataToParent}
+                    type={'ckm'}
+                    setLoading={setLoading}
+                    // defaultPicture={user.avatar}
+                    ref={avatarRef}
+                    textSupport={`Hỗ trợ file pdf`}
+                    label={`Chữ ký mẫu`}
+                    className={``}
                 />
                 {data?.name != null ? (
                     <div className={`flex justify-start items-center mt-6`}>
