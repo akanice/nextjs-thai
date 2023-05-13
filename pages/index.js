@@ -1,12 +1,12 @@
 import React from 'react';
-import MainLayout from '@components/Layout/MainLayout';
+import RegisterLayout from '@components/Layout/RegisterLayout';
 import Home from '@components/Home';
 
 const _Home = ({ setting }) => {
     return (
-        <MainLayout title="Home" setting={setting}>
+        <RegisterLayout title="Login" setting={setting}>
             <Home />
-        </MainLayout>
+        </RegisterLayout>
     );
 };
 

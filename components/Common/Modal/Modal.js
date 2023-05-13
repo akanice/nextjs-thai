@@ -1,4 +1,3 @@
-import LoaderOverlay from './LoaderOverlay';
 import Modal from 'react-modal';
 import { MdClose } from 'react-icons/md';
 
@@ -10,12 +9,15 @@ const customStyles = {
     bottom: `auto`,
     marginRight: `-50%`,
     transform: `translate(-50%, -50%)`,
-    overflow: `unset`,
-    padding: `20px 0`,
-    borderRadius: `20px`
+    overflow: `auto`,
+    padding: `0`,
+    borderRadius: `12px`,
+    border: `0`,
+    maxHeight: `calc(100vh - 30px)`,
   },
   overlay: {
-    background: `rgba(33, 37, 41, 0.5)`
+    background: `rgba(33, 37, 41, 0.6)`,
+    zIndex:`2000`,
   }
 };
 
@@ -24,6 +26,7 @@ const CustomModal = ({ title, isOpen, onClose, className, setIsOpen, isLoading, 
 
   return (
     <Modal
+
       isOpen={isOpen}
       onAfterOpen={null}
       onRequestClose={onClose}
@@ -31,11 +34,11 @@ const CustomModal = ({ title, isOpen, onClose, className, setIsOpen, isLoading, 
       contentLabel={title}>
       <div className={className + ` relative`}>
         {setIsOpen && (
-          <button onClick={() => setIsOpen(false)} transparent className={`px-6`}>
-            <MdClose />
+          <button onClick={() => setIsOpen(false)} transparent className={`absolute right-2 top-2`}>
+            <MdClose size={20} />
           </button>
         )}
-        {isLoading && <LoaderOverlay />}
+        {isLoading && ``}
         {children}
       </div>
     </Modal>
